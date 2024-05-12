@@ -14,3 +14,4 @@
 - textarea
 - tooltip
 - dialog
+- table
