@@ -1,0 +1,31 @@
+.input-container {
+    display: flex;
+    width: 100%;
+    padding: 5px;
+    gap: 0.25rem;
+}
+
+.input-container label {
+    min-width: 30%;
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+.input-container input {
+    border: 1px solid;
+    width: auto;
+    padding: 0.5rem 0.75rem;
+    border-radius: 0.125rem;
+    box-shadow: 1px 1px var(--w-green-dark), 
+                2px 2px var(--w-black-dark), 
+                inset 0 0 0 2px var(--w-indigo-dark);
+    margin: 0 2px 2px 0;
+    font-size: 1rem;
+    font-weight: normal;
+}
+
+.input-container input:hover {
+    box-shadow: 1px 1px var(--w-green-light), 
+                2px 2px var(--w-black-dark), 
+                inset 0 0 0 2px var(--w-indigo-dark);
+}
