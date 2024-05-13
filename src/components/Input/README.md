@@ -1,5 +1,7 @@
 # Input
-
+```jsx
+<Input label="name:" placeholder="Input something" onInput={(e)=>console.log(e)}></Input>
+```
 # props
 `Input` is based on `react-aria useTextField` with the following properties:
 
@@ -268,9 +270,32 @@ string
 —
 Identifies the element that provides an error message for the object.
 # other props
+`className` and `style` are for the container div.
+
 `direction`
 "column | row" the direction of the label and input.
 
-`inputClassName` the class of the input element
+`inputClassName` the class of the input element.
 
-`labelClassName` the class of the label element
+`labelClassName` the class of the label element.
+
+# styling
+Use the `className` and `style` change the container's styling.
+
+Use the `inputClassName` and `labelClassName` change the inner input / label elements styling.
+
+Or use a custom `label` for the label element.
+
+# validation
+`validate` property can be used to validate the input value, the check is real time. That's said every time you change the value, the check will run and render the error message.
+```jsx
+<Input validate={(val) => { check the val and return the error message}}/>
+```
+
+`errorMessage` which is a react jsx node, will be rendered if seted. When you want to validate the value by yourself, maybe once the form is submitted, then run the check in your component.
+```jsx
+function MyComponent() {
+    const msgManagedByYou = if (my condition) ? null : 'xxx';
+    return <Input errorMessage={msgManagedByYou}/>
+}
+```

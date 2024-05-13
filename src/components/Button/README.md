@@ -1,5 +1,7 @@
-# button
-
+# Button
+```jsx
+<Button onPress={()=>alert('click')}>Click</Button>
+```
 # props
 `Button` is based on `react-aria hook` with the following properties:
 
