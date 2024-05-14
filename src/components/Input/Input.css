@@ -22,10 +22,21 @@
     margin: 0 2px 2px 0;
     font-size: 1rem;
     font-weight: normal;
+    -webkit-transition: .4s;
+    transition: .4s;
 }
-
+.input-container input:disabled {
+    opacity: 0.4;
+    background-color: #ccc;
+    filter: grayscale(1);
+    border: 2px dashed ;
+    box-shadow: 2px 2px var(--w-red-dark), 4px 4px var(--w-red-dark);
+}
+.input-container input:disabled:hover {
+    box-shadow: 2px 2px var(--w-red-dark), 4px 4px var(--w-red-dark);
+}
 .input-container input:hover {
-    box-shadow: 1px 1px var(--w-green-light), 
-                2px 2px var(--w-black-dark), 
+    box-shadow: 2px 2px var(--w-green-light), 
+                3px 3px var(--w-black-dark), 
                 inset 0 0 0 2px var(--w-indigo-dark);
 }

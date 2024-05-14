@@ -43,7 +43,10 @@ function Radio(props: RadioProps) {
     const ref = React.useRef(null);
     const { inputProps } = useRadio(props, state, ref);
     return (
-        <label className={'radio-container ' + props.className} style={props.style}>
+        <label className={'radio-container ' + props.className} style={{
+            opacity: props.isDisabled ? 0.4 : 1,
+            ...props.style
+        }}>
             <input {...inputProps} ref={ref} type='radio'/>
             <span className="checkmark"></span>
             {children}

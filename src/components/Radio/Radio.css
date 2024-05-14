@@ -33,18 +33,30 @@
     left: 0;
     height: 20px;
     width: 20px;
-    background-color: var(--w-white-dark);
+    background-color: #fff;
     border-radius: 50%;
     border: 1px solid var(--w-black);
     box-shadow: 1px 1px var(--w-green-dark), 
                 2px 2px var(--w-black-dark), 
                 inset 0 0 0 1px var(--w-indigo-dark);
-
+    -webkit-transition: .4s;
+    transition: .4s;
 }
+
+.radio-container input[type="radio"]:disabled~.checkmark {
+    filter: grayscale(1);
+    border: 2px dashed ;
+    background-color: #ccc;
+    box-shadow: 1px 1px var(--w-white-dark), 2px 2px var(--w-red-dark);
+}
+
 .radio-container .checkmark:hover {
-    box-shadow: 1px 1px var(--w-green-light), 
-                2px 2px var(--w-black-dark), 
+    box-shadow: 2px 2px var(--w-green-light), 
+                3px 3px var(--w-black-dark), 
                 inset 0 0 0 1px var(--w-indigo-dark);
+}
+.radio-container input[type="radio"]:disabled~.checkmark:hover {
+    box-shadow: 1px 1px var(--w-white-dark), 2px 2px var(--w-red-dark);
 }
 
 .radio-container .checkmark:after {
