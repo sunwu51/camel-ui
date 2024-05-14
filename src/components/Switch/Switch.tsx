@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import { useRef } from 'react';
 import { useCheckbox } from '@react-aria/checkbox';
 import { useFocusRing } from '@react-aria/focus';
 import { useToggleState, ToggleStateOptions } from '@react-stately/toggle';
