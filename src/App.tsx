@@ -3,6 +3,7 @@ import Input from './components/Input/Input';
 import { RadioGroup, Radio } from './components/Radio/Radio';
 import Checkbox from './components/Checkbox/Checkbox';
 import Switch from './components/Switch/Switch';
+import Select from './components/Select/Select';
 
 function App() {
     return <>
@@ -11,7 +12,7 @@ function App() {
             <Button isDisabled={true}>Disable</Button>
             <Button className='bg-[var(--w-red)] hover:bg-[var(--w-red-dark)]'>Red</Button>
         </div>
-        <div>
+        <div style={{width: '300px'}}>
             <Input label="name:" placeholder="input your name"></Input>
             <Input label="disable:" isDisabled={true} placeholder="disable"></Input>
         </div>
@@ -35,6 +36,10 @@ function App() {
             <Switch defaultSelected={true}>normal</Switch>
             <Switch round={true}>round</Switch>
             <Switch round={true} isDisabled={true}>disabled</Switch>
+        </div>
+        <div style={{width: '300px'}}>
+            <Select label="choose"></Select>
+            <Select></Select>
         </div>
     </>
 }
