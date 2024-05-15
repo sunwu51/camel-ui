@@ -1,0 +1,7 @@
+.card-container {
+    padding: 5px;
+    border: 1px solid;
+    border-radius: 0.5rem;
+    box-shadow: 2px 2px var(--w-green-dark), 4px 4px var(--w-black-dark), inset 0 0 0 1px var(--w-indigo-dark);
+    margin: 0 2px 2px 0;
+}

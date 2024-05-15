@@ -1,0 +1,6 @@
+.show-desc {
+    display: none;
+}
+li .show-desc {
+    display: block;
+}

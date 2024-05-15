@@ -15,3 +15,4 @@
 - tooltip
 - dialog
 - table
+- details
