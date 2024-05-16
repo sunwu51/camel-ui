@@ -6,6 +6,7 @@ import Switch from './components/Switch/Switch';
 import Select from './components/Select/Select';
 import Dialog from './components/Dialog/Dialog';
 import Card from './components/Card/Card';
+import Badge from './components/Badge/Badge';
 import { Tabs, Item } from './components/Tabs/Tabs';
 import './App.css'
 
@@ -79,13 +80,18 @@ function App() {
                     <Switch round={true} isDisabled={true}>disabled</Switch>
                 </div>
             </Item>
+            <Item title="Badge" key="tab3">
+                <div>
+                    <legend style={{fontWeight: 900, padding: '5px'}}>Badge</legend>
+                    <div style={{padding: '10px'}}>
+                    <Badge>default</Badge> &nbsp;
+                    <Badge className='bg-[var(--w-red-dark)]'>red-dark</Badge> &nbsp;
+                    <Badge className='bg-[var(--w-yellow-dark)]'>yellow-dark</Badge> &nbsp;
+                    <Badge className='bg-[var(--w-green-dark)]'>green-dark</Badge> &nbsp;
+                    </div>
+                </div>
+            </Item>
         </Tabs>
     );
-   
-
-
-
-
-    // </>
 }
 export default App
