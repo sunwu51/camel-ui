@@ -1,0 +1,13 @@
+.textarea-container {
+    width: 300px;
+    border: 1px solid;
+    box-shadow: 1px 1px var(--w-green-dark), 
+    2px 2px var(--w-black-dark), 
+    inset 0 0 0 2px var(--w-indigo-dark);
+    padding: 1rem;
+}
+.textarea-container:hover, .textarea-container:focus {
+    box-shadow: 2px 2px var(--w-green), 
+    3px 3px var(--w-black-dark), 
+    inset 0 0 0 2px var(--w-black);
+}

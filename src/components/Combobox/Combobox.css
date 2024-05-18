@@ -1,15 +1,15 @@
-.select-container {
+.combobox-container {
     position: relative;
     display: flex;
     flex-direction: column;
     padding: 5px;
 }
 
-.select-container label {
+.combobox-container label {
     font-weight: bolder;
 }
 
-.select-container button {
+.combobox-input {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -29,20 +29,24 @@
     transition: .4s;
 }
 
-.select-container button:hover, .select-container button:focus {
+.combobox-input input {
+    width: 100%;
+    padding: 0;
+}
+
+.combobox-input:hover, .combobox-input:focus {
     box-shadow: 2px 2px var(--w-green-light), 
     3px 3px var(--w-black-dark), 
     inset 0 0 0 2px var(--w-black);
 }
 
 
-.select-container .arrow {
-    width: 25px;
+.combobox-container .arrow {
     transition: all 400ms ease;
     transform: rotate(0deg);
 }
 
-.select-container .listbox {
+.combobox-container .listbox {
     position: absolute;
     z-index: 999;
     top: 100%;
@@ -60,14 +64,14 @@
     background: var(--w-white);
 }
 
-.select-container .listbox ul {
+.combobox-container .listbox ul {
     max-height: 200px;
     overflow-y: auto;
     padding: 0.5rem 0.75rem;
 
 }
 
-.select-container .listbox::before {
+.combobox-container .listbox::before {
     content: '';
     position: absolute;
     top: -13px;

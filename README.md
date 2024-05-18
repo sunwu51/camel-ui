@@ -1,18 +1,19 @@
 # camel-ui
 
 # components in plan
-- button
 - badge
+- button
 - card
-- tab
+- checkbox
+- combobox
+- details
+- dialog
 - input
 - input file
-- checkbox
+- radio
 - select
-- combobox
 - switch
+- table
+- tabs
 - textarea
 - tooltip
-- dialog
-- table
-- details

@@ -35,8 +35,8 @@
 .input-container input:disabled:hover {
     box-shadow: 2px 2px var(--w-red-dark), 4px 4px var(--w-red-dark);
 }
-.input-container input:hover {
+.input-container input:hover, .input-container input:focus {
     box-shadow: 2px 2px var(--w-green-light), 
                 3px 3px var(--w-black-dark), 
-                inset 0 0 0 2px var(--w-indigo-dark);
+                inset 0 0 0 2px var(--w-black);
 }
