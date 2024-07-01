@@ -1,0 +1,86 @@
+.radio-group-container {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;  
+}
+
+.radio-group-container>span {
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+.radio-container {
+    display: inline-block;
+    position: relative;
+    padding-left: 25px;
+    padding-right: 25px;
+    cursor: pointer;
+    user-select: none;
+}
+
+/* hide original input element */
+.radio-container input[type="radio"] {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+}
+
+/* use a span with checkmark class display the radio */
+.radio-container .checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 20px;
+    width: 20px;
+    background-color: #fff;
+    border-radius: 50%;
+    border: 1px solid var(--w-black);
+    box-shadow: 1px 1px var(--w-green-dark), 
+                2px 2px var(--w-black-dark), 
+                inset 0 0 0 1px var(--w-indigo-dark);
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+.radio-container input[type="radio"]:disabled~.checkmark {
+    filter: grayscale(1);
+    border: 2px dashed ;
+    background-color: #ccc;
+    box-shadow: 1px 1px var(--w-white-dark), 2px 2px var(--w-red-dark);
+}
+
+.radio-container .checkmark:hover {
+    box-shadow: 2px 2px var(--w-green-light), 
+                3px 3px var(--w-black-dark), 
+                inset 0 0 0 1px var(--w-indigo-dark);
+}
+.radio-container input[type="radio"]:disabled~.checkmark:hover {
+    box-shadow: 1px 1px var(--w-white-dark), 2px 2px var(--w-red-dark);
+}
+
+.radio-container .checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+.radio-container .checkmark:after {
+    top: 4px;
+    left: 4px;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: var(--w-yellow);
+    border: 1px solid;
+    display: none;
+}
+
+
+.radio-container input[type="radio"]:checked~.checkmark:after {
+    display: block;
+}
+
+.radio-container input[type="radio"]:checked~.checkmark {
+    background-color: var(--w-blue);
+    border: 0;
+}
