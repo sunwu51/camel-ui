@@ -1,15 +1,9 @@
-import { useRadio, useRadioGroup, AriaRadioGroupProps, AriaRadioProps } from '@react-aria/radio';
+import { useRadio, useRadioGroup } from '@react-aria/radio';
 import React from 'react';
 import { useRadioGroupState, RadioGroupState } from '@react-stately/radio';
-import BaseProps from '../BaseProps';
 import './Radio.css'
-
-interface RadioGroupProps extends BaseProps, AriaRadioGroupProps {
-}
-
-interface RadioProps extends BaseProps, AriaRadioProps {
-}
-
+import { cn } from '../cn';
+import { RadioGroupProps, RadioProps } from '../../types';
 const RadioContext = React.createContext<RadioGroupState | null>(null);
 
 function RadioGroup(props: RadioGroupProps) {
@@ -19,7 +13,7 @@ function RadioGroup(props: RadioGroupProps) {
         useRadioGroup(props, state);
 
     return (
-        <div {...radioGroupProps} className={'radio-group-container ' + props.className} style={props.style}>
+        <div {...radioGroupProps} className={cn('radio-group-container',props.className)} style={{...props.style}}>
             <span {...labelProps}>{label}</span>
             <RadioContext.Provider value={state}>
                 {children}

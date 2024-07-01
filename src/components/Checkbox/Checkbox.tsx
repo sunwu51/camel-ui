@@ -1,11 +1,9 @@
 import React from 'react';
-import { useCheckbox, AriaCheckboxProps } from '@react-aria/checkbox';
-import { useToggleState,ToggleStateOptions } from '@react-stately/toggle';
-import BaseProps from '../BaseProps';
+import { useCheckbox } from '@react-aria/checkbox';
+import { useToggleState } from '@react-stately/toggle';
 import './Checkbox.css'
+import { CheckboxProps } from '../../types';
 
-interface CheckboxProps extends BaseProps, ToggleStateOptions, AriaCheckboxProps {
-}
 
 function Checkbox(props: CheckboxProps) {
     const state = useToggleState(props);

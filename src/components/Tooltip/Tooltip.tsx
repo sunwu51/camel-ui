@@ -1,17 +1,11 @@
 import React from 'react';
-import { useTooltip, useTooltipTrigger, AriaTooltipProps, TooltipTriggerProps } from "@react-aria/tooltip";
+import { useTooltip, useTooltipTrigger } from "@react-aria/tooltip";
 import { mergeProps } from "@react-aria/utils";
-import { useTooltipTriggerState, TooltipTriggerState } from "@react-stately/tooltip";
-import BaseProps from '../BaseProps'
+import { useTooltipTriggerState } from "@react-stately/tooltip";
 import './Tooltip.css'
+import { TooltipProps, TriggerProps } from '../../types';
 
-interface TooltipProps extends BaseProps, AriaTooltipProps  {
-    state?: TooltipTriggerState,
-}
 
-interface TriggerProps extends BaseProps, TooltipTriggerProps {
-    overlay: string| React.ReactElement,
-}
 
 function Tooltip(props: TooltipProps) {
     const { state } = props;

@@ -1,11 +1,8 @@
 import React from 'react'
-import { AriaButtonOptions, useButton } from '@react-aria/button';
-import { twMerge } from 'tw-merge';
-import BaseProps from '../BaseProps';
+import { useButton } from '@react-aria/button';
+import { cn } from '../cn';
+import {type ButtonProps} from '../../types'
 import './Button.css'
-
-interface ButtonProps extends BaseProps, AriaButtonOptions<'button'> {
-}
 
 function Button({className = '', style, ...props } : ButtonProps) {
   const ref = React.useRef(null);
@@ -13,7 +10,7 @@ function Button({className = '', style, ...props } : ButtonProps) {
   return (
     <button
       ref={ref}
-      className={twMerge('button ' + className)}
+      className={cn('button',className)}
       style={{ ...style }}
       {...buttonProps}
     >

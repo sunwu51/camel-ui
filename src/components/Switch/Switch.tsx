@@ -1,13 +1,12 @@
 import { useRef } from 'react';
 import { useCheckbox } from '@react-aria/checkbox';
 import { useFocusRing } from '@react-aria/focus';
-import { useToggleState, ToggleStateOptions } from '@react-stately/toggle';
-import BaseProps from '../BaseProps';
+import { useToggleState } from '@react-stately/toggle';
 import './Switch.css';
+import { cn } from '../cn';
+import { SwitchProps } from '../../types';
 
-interface SwitchProps extends BaseProps, ToggleStateOptions {
-    round?: boolean
-}
+
 
 function Switch(props: SwitchProps) {
     const state = useToggleState(props);
@@ -15,7 +14,7 @@ function Switch(props: SwitchProps) {
     const { inputProps } = useCheckbox(props, state, ref);
     const { focusProps } = useFocusRing();
     return <>
-        <div className={'switch-container ' + props.className??""}>
+        <div className={cn('switch-container', props.className)} style={{...props.style}}>
             <label className="switch-label" style={{
                     opacity: props.isDisabled ? 0.4 : 1,
                     ...props.style

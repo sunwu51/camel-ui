@@ -1,10 +1,10 @@
-import BaseProps from "../BaseProps";
 import './Card.css'
+import { cn } from '../cn';
+import { CardProps } from '../../types';
 
-interface CardProps extends BaseProps {}
 
 function Card(props: CardProps) {
-    return <div className={"card-container " + (props.className? props.className : '')} style={props.style}>
+    return <div className={cn("card-container ", props.className)} style={{...props.style}}>
         {props.children}
     </div>
 }

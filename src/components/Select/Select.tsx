@@ -1,15 +1,8 @@
-import { ReactNode } from 'react'
 import { useSelect } from 'downshift'
 import './Select.css'
-import BaseProps from '../BaseProps'
+import { cn } from '../cn'
+import { SelectProps } from '../../types'
 
-
-interface SelectProps extends BaseProps {
-    defaultIndex?: number,
-    placeholder?: string,
-    label?: string | ReactNode,
-    items: string[] | ReactNode[]
-}
 function Select(props: SelectProps) {
     const {
         isOpen,
@@ -21,11 +14,12 @@ function Select(props: SelectProps) {
         getItemProps,
     } = useSelect({
         items: props.items,
-        defaultSelectedItem: props.defaultIndex !== undefined ? props.items[props.defaultIndex] : undefined
+        defaultSelectedItem: props.defaultIndex !== undefined ? props.items[props.defaultIndex] : undefined,
+        onSelectedItemChange: props.onSelectedItemChange
     })
 
     return (
-        <div className='select-container'>
+        <div className={cn('select-container', props.className)} style={{...props.style}}>
             <label className='select-label' {...getLabelProps()}>
                 {props.label}
             </label>

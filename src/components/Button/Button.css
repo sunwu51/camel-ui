@@ -1,7 +1,7 @@
 .button {
     position: relative;
     display: inline-block;
-    padding: 0.25rem 0.75rem;
+    padding: 0.5rem 0.75rem;
     border: 2px solid black;
     border-radius: 0.5rem;
     background: var(--w-blue);
@@ -11,7 +11,7 @@
     margin: 0 5px 5px 0;
     cursor: inherit;
 }
-.button:hover, .button:focus {
+.button:hover {
     background: var(--w-blue-dark);
     color: var(--w-white);
     box-shadow: 2px 2px var(--w-green-light), 4px 4px var(--w-black-light);

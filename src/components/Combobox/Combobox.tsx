@@ -1,20 +1,9 @@
 import React from 'react'
 import { useCombobox } from 'downshift'
-import BaseProps from '../BaseProps'
 import './Combobox.css'
+import { cn } from '../cn'
+import { ComboboxProps, ComboboxItem} from '../../types'
 
-interface ComboboxProps extends BaseProps {
-    label?: React.ReactNode,
-    items: ComboboxItem[],
-    getFilter: (inputStr: string) => (obj: ComboboxItem)=>boolean,
-    onChange?: (obj: ComboboxItem|null) => void
-    placeholder?: string
-}
-
-type ComboboxItem =  {
-    itemToString(): string,
-    itemToJsx(): React.ReactNode,
-} | string
 
 function Combobox(props: ComboboxProps) {
     const { label, items, getFilter } = props;
@@ -45,7 +34,7 @@ function Combobox(props: ComboboxProps) {
     }
 
     return (
-        <div className="combobox-container">
+        <div className={cn("combobox-container", props.className)} style={{...props.style}}>
             <div>
                 {label && <label className="w-fit" {...getLabelProps()}>
                     {label}

@@ -1,14 +1,9 @@
 import React from 'react';
-import { AriaTextFieldProps, useTextField } from '@react-aria/textfield';
-import BaseProps from '../BaseProps';
+import { useTextField } from '@react-aria/textfield';
 import { useId } from 'react-aria';
+import { cn } from '../cn';
+import { InputProps } from '../../types';
 import './Input.css';
-
-interface InputProps extends BaseProps, AriaTextFieldProps {
-    labelClassName?: string,
-    inputClassName?: string,
-    direction?: 'row' | 'column',
-}
 
 function Input(props: InputProps) {
     const { label } = props;
@@ -25,17 +20,19 @@ function Input(props: InputProps) {
     const dir = props.direction??'column';
     const align = dir === 'column' ? 'end' : 'center';
     return (
-        <div className={"input-container " + (props.className??"")} style={{ flexDirection: dir, ...props.style }}>
-            <label  {...labelProps} className={props.labelClassName}
-                style={dir === 'column' ?
-                    { alignContent: align, textAlign: 'start' } :
-                    { alignContent: align, textAlign: 'end' }
-                }
-                htmlFor={inputId}
-            >
-                {label}
-            </label>
-            <input {...inputProps} ref={ref} className={props.inputClassName} id={inputId}/>
+        <div className={cn("input-container", props.className)} style={{ flexDirection: dir, ...props.style }}>
+            { label &&
+                <label  {...labelProps} className={props.labelClassName}
+                    style={dir === 'column' ?
+                        { alignContent: align, textAlign: 'start' } :
+                        { alignContent: align, textAlign: 'end' }
+                    }
+                    htmlFor={inputId}
+                >
+                    {label}
+                </label>
+            }
+            <input {...inputProps} ref={ref} className={cn('flex-1', props.inputClassName)} id={inputId}/>
             {props.description && (
                 <div {...descriptionProps} style={{ fontSize: '0.75rem' }}>
                     {props.description}

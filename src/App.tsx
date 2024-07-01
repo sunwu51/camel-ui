@@ -117,7 +117,7 @@ function App() {
                     <legend style={{ fontWeight: 900, padding: '5px' }}>组件10: Details</legend>
                     <Card style={{ width: '400px' }}>
                         <Details title={"This is a title open to see details"}
-                            content={<h1 style={{ fontSize: '3rem' }}>Hello World~</h1>}
+                            children={<h1 style={{ fontSize: '3rem' }}>Hello World~</h1>}
                         ></Details>
                     </Card>
                     <div>
