@@ -68,3 +68,9 @@ export interface TooltipProps extends BaseProps, AriaTooltipProps  {
 export interface TriggerProps extends BaseProps, TooltipTriggerProps {
     overlay: string| React.ReactElement,
 }
+
+export type AlertProps = BaseProps & {
+    type: 'success' | 'warning' | 'error' | 'info';
+    show: boolean;
+    message: string;
+};

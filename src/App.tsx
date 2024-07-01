@@ -120,7 +120,7 @@ function App() {
                             children={<h1 style={{ fontSize: '3rem' }}>Hello World~</h1>}
                         ></Details>
                     </Card>
-                    <div>
+                    <div className='p-[5px]'>
                         <RadioGroup label="组件11: Radio" defaultValue={"dog"}>
                             <Radio value='cat' id='c1'>Cat</Radio>
                             <Radio value='dog'>Dog</Radio>
@@ -129,17 +129,21 @@ function App() {
                     </div>
                     <div>
                         <legend style={{ fontWeight: 900, padding: '5px' }}>组件12: Checkbox</legend>
-                        <Checkbox>use react</Checkbox>
-                        <Checkbox defaultSelected={true}>use vue</Checkbox>
-                        <Checkbox isDisabled={true}>disable</Checkbox>
-                        <Checkbox isDisabled={true} defaultSelected={true}>disable</Checkbox>
+                        <div className='p-[5px] flex gap-2'>
+                            <Checkbox>use react</Checkbox>
+                            <Checkbox defaultSelected={true}>use vue</Checkbox>
+                            <Checkbox isDisabled={true}>disable</Checkbox>
+                            <Checkbox isDisabled={true} defaultSelected={true}>disable</Checkbox>
+                        </div>
 
                     </div>
                     <div>
                         <legend style={{ fontWeight: 900, padding: '5px' }}>组件13: Switch</legend>
-                        <Switch defaultSelected={true}>normal</Switch>
-                        <Switch round={true}>round</Switch>
-                        <Switch round={true} isDisabled={true}>disabled</Switch>
+                        <div className='p-[5px] flex gap-2'>
+                            <Switch defaultSelected={true}>normal</Switch>
+                            <Switch round={true}>round</Switch>
+                            <Switch round={true} isDisabled={true}>disabled</Switch>
+                        </div>
                     </div>
                     <div>
                         <legend style={{ fontWeight: 900, padding: '5px' }}>组件14: Badge</legend>

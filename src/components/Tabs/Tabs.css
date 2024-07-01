@@ -2,7 +2,6 @@
     width: 100%;
     margin-bottom: 5px;
     margin-right: 5px;
-    padding: 5px;
 
 }
 
@@ -50,8 +49,8 @@
     border-left: 2px solid black;
     border-bottom: 2px solid black;
     border-right: 2px solid black;
-    border-bottom-left-radius: 1rem;
-    border-bottom-right-radius: 1rem;
+    border-bottom-left-radius: .5rem;
+    border-bottom-right-radius: .5rem;
     box-shadow: 2px 0px var(--w-green-dark), 2px 2px var(--w-green-dark), 4px 0px var(--w-black-dark), 4px 4px var(--w-black-dark);
 }
 
@@ -65,7 +64,7 @@
     border-left: 2px solid black;
     border-bottom: 2px solid black;
     border-right: 2px solid black;
-    border-bottom-left-radius: 1rem;
-    border-bottom-right-radius: 1rem;
+    border-bottom-left-radius: .5rem;
+    border-bottom-right-radius: .5rem;
     box-shadow: 2px 0px var(--w-green-dark), 2px 2px var(--w-green-dark), 4px 0px var(--w-black-dark), 4px 4px var(--w-black-dark);
 }

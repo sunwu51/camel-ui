@@ -2,7 +2,6 @@
     position: relative;
     display: flex;
     flex-direction: column;
-    padding: 5px;
 }
 
 .select-container label {
@@ -10,6 +9,7 @@
 }
 
 .select-container button {
+    height: 3rem;
     display: flex;
     flex-direction: row;
     justify-content: space-between;

@@ -1,5 +1,4 @@
 .checkbox-container {
-    padding: 5px;
     display: flex;
     align-items: center;
     position: relative;
@@ -9,10 +8,13 @@
 }
 
 .checkbox-container label {
-    margin-left: 27px;
+    display: flex;
+    align-items: center;
+    margin-left: 23px;
 }
 
 .checkbox-container input[type="checkbox"] {
+    display: none;
     position: absolute;
     opacity: 0;
     cursor: pointer;
@@ -20,8 +22,8 @@
 
 .checkbox-container .checkmark {
     position: absolute;
-    top:7px;
-    left: 5px;
+    top: 2px;
+    left: 0;
     height: 20px;
     width: 20px;
     background-color: #eee;

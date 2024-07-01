@@ -1,10 +1,18 @@
 {
-  "name": "camel-ui",
-  "version": "1.0.0",
+  "name": "@sunwu51/camel-ui",
+  "version": "0.0.1",
   "type": "module",
   "main": "dist/camel.umd.js",
   "module": "dist/camel.es.js",
   "types": "dist/types/index.d.ts",
+  "keywords": [
+    "react",
+    "component",
+    "react-aria",
+    "camel-ui"
+  ],
+  "author": "Frank",
+  "license": "MIT",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
@@ -14,11 +22,12 @@
   "dependencies": {
     "clsx": "^2.1.1",
     "downshift": "^9.0.4",
-    "react": "^18.2.0",
     "react-aria": "^3.33.0",
-    "react-dom": "^18.2.0",
-    "tailwind-merge": "^2.3.0",
-    "tw-merge": "^0.0.1-alpha.3"
+    "tailwind-merge": "^2.3.0"
+  },
+  "peerDependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
   },
   "devDependencies": {
     "@types/node": "^20.14.9",
@@ -40,5 +49,15 @@
     "vite-plugin-dts": "^3.9.1",
     "vite-plugin-lib-inject-css": "^2.1.1",
     "vite-plugin-style-import": "^2.0.0"
-  }
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sunwu51/camel-ui.git"
+  },
+  "files": [
+    "dist"
+  ]
 }

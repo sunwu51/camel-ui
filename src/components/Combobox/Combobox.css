@@ -2,7 +2,6 @@
     position: relative;
     display: flex;
     flex-direction: column;
-    padding: 5px;
 }
 
 .combobox-container label {
@@ -11,6 +10,7 @@
 
 .combobox-input {
     display: flex;
+    height: 3rem;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
@@ -68,7 +68,6 @@
     max-height: 200px;
     overflow-y: auto;
     padding: 0.5rem 0.75rem;
-
 }
 
 .combobox-container .listbox::before {
