@@ -11,7 +11,6 @@ function Details(props: DetailsProps) {
   const state = useToggleState(props);
   const { isSelected } = state;
   const { buttonProps } = useToggleButton(props, state, ref);
-
   return (
     <div className={cn('details-container', props.className)} style={{...props.style}}>
         <button {...buttonProps} className={'details-title'}>
@@ -23,11 +22,9 @@ function Details(props: DetailsProps) {
                         <path strokeWidth={2} fill='var(--w-blue)' d="M464 256c0-114.87-93.13-208-208-208S48 141.13 48 256s93.13 208 208 208 208-93.13 208-208zm-99.73-44L256 342.09 147.73 212z"></path>
                 </svg>
         </button>
-        {state.isSelected &&
-            <div className={'details-content'}>
-                {props.children}
-            </div>
-        }
+          <div className={cn('details-content', state.isSelected? '' :'hidden')}>
+              {props.children}
+          </div>
     </div>
   );
 }
