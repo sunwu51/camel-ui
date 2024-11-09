@@ -72,7 +72,7 @@ function App() {
                         <legend style={{ fontWeight: 900, padding: '5px' }}>组件4: Inputfile</legend>
                         <div style={{ padding: '10px' }}>
                             <div>
-                                <Inputfile>
+                                <Inputfile onChange={console.log}>
                                     <Button>Upload</Button>
                                 </Inputfile>
                             </div>

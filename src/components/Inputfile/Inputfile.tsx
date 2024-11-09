@@ -26,7 +26,7 @@ function Inputfile(props: InputfileProps) {
         {file && 
             <span style={{marginLeft: '10px'}}>{(file as any).name}</span>
         }
-        <input type="file" name={props.name} style={{display: 'none'}} ref={ref}  onChange={()=>onChange()} />
+        <input type="file" name={props.name} style={{display: 'none'}} ref={ref}  onChange={()=>{onChange(); (ref.current! as any).value = ''} } />
     </>
 }
 
