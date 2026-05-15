@@ -1,6 +1,130 @@
 .show-desc {
     display: none;
 }
+
 li .show-desc {
     display: block;
+}
+
+.demo-option {
+    display: flex;
+    flex-direction: column;
+    gap: 0.125rem;
+}
+
+.demo-option-title {
+    font-size: 1rem;
+    font-weight: 600;
+    line-height: 1.25rem;
+}
+
+.show-desc {
+    font-size: 0.8rem;
+    line-height: 1.1rem;
+}
+
+.app-shell {
+    padding: 1rem;
+}
+
+.app-columns {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    gap: 1rem;
+}
+
+.app-column {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.app-divider {
+    align-self: stretch;
+    width: 2px;
+    background: currentColor;
+    opacity: 0.3;
+}
+
+.demo-block {
+    width: 300px;
+}
+
+.demo-legend {
+    font-weight: 900;
+    padding: 5px;
+}
+
+.demo-pad {
+    padding: 5px;
+}
+
+.form-demo-section {
+    margin-top: 2rem;
+    max-width: 760px;
+}
+
+.form-demo-card {
+    border: 1px solid;
+    padding: 1rem;
+    box-shadow: 1px 1px var(--w-green-dark),
+        2px 2px var(--w-black-dark),
+        inset 0 0 0 2px var(--w-indigo-dark);
+}
+
+.form-demo-title {
+    margin: 0 0 0.375rem;
+    font-size: 1.2rem;
+    font-weight: 700;
+}
+
+.form-demo-subtitle {
+    margin: 0 0 1rem;
+    font-size: 0.9rem;
+    line-height: 1.4;
+}
+
+.form-demo-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem;
+}
+
+.form-demo-grid > * {
+    min-width: 0;
+}
+
+.form-demo-full {
+    grid-column: 1 / -1;
+}
+
+.form-demo-field {
+    display: flex;
+    flex-direction: column;
+    gap: 0.375rem;
+}
+
+.form-demo-label {
+    display: block;
+    font-size: 0.95rem;
+    line-height: 1.25rem;
+    font-weight: 700;
+}
+
+.form-demo-textarea {
+    min-height: 7rem;
+}
+
+.form-demo-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.875rem 1.25rem;
+    align-items: center;
+}
+
+@media (max-width: 760px) {
+    .form-demo-grid {
+        grid-template-columns: 1fr;
+    }
 }

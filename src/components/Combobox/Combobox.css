@@ -4,26 +4,38 @@
     flex-direction: column;
 }
 
+.combobox-container > div:first-child {
+    display: flex;
+    flex-direction: column;
+    gap: 0.375rem;
+}
+
 .combobox-container label {
-    font-weight: bolder;
+    display: block;
+    font-size: 0.95rem;
+    line-height: 1.25rem;
+    font-weight: 700;
 }
 
 .combobox-input {
     display: flex;
-    height: 3rem;
+    min-height: 2.75rem;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+    gap: 0.5rem;
     text-align: start;
     border: 1px solid;
-    width: auto;
+    width: 100%;
     padding: 0.5rem 0.75rem;
     border-radius: 0.125rem;
+    box-sizing: border-box;
     box-shadow: 1px 1px var(--w-green-dark),
         2px 2px var(--w-black-dark),
         inset 0 0 0 2px var(--w-indigo-dark);
     margin: 0 2px 2px 0;
-    font-size: 1rem;
+    font-size: 0.95rem;
+    line-height: 1.5;
     font-weight: normal;
     -webkit-transition: .4s;
     transition: .4s;
@@ -31,15 +43,31 @@
 
 .combobox-input input {
     width: 100%;
+    min-width: 0;
     padding: 0;
+    border: 0;
+    outline: 0;
+    background: transparent;
+    font-size: inherit;
+    line-height: inherit;
 }
 
-.combobox-input:hover, .combobox-input:focus {
-    box-shadow: 2px 2px var(--w-green-light), 
-    3px 3px var(--w-black-dark), 
-    inset 0 0 0 2px var(--w-black);
+.combobox-input button {
+    display: flex;
+    align-items: center;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    flex-shrink: 0;
+    cursor: pointer;
 }
 
+.combobox-input:hover,
+.combobox-input:focus {
+    box-shadow: 2px 2px var(--w-green-light),
+        3px 3px var(--w-black-dark),
+        inset 0 0 0 2px var(--w-black);
+}
 
 .combobox-container .arrow {
     transition: all 400ms ease;
@@ -52,16 +80,21 @@
     top: 100%;
     border: 1px solid;
     padding: 2px;
-    width: calc(100% - 10px);
+    width: calc(100% - 4px);
     border-radius: 0.125rem;
     box-shadow: 1px 1px var(--w-green-dark),
         2px 2px var(--w-black-dark),
         inset 0 0 0 2px var(--w-indigo-dark);
     margin: 0 2px 2px 0;
-    font-size: 1rem;
+    font-size: 0.95rem;
+    line-height: 1.4;
     font-weight: normal;
     animation: fadeIn 0.5s forwards;
     background: var(--w-white);
+}
+
+.combobox-container .listbox li :where(h1, h2, h3, h4, h5, h6, p) {
+    margin: 0;
 }
 
 .combobox-container .listbox ul {
