@@ -3,6 +3,7 @@ import { useCombobox } from 'downshift'
 import './Combobox.css'
 import { cn } from '../cn'
 import { ComboboxProps, ComboboxItem} from '../../types'
+import Chevron from '../Chevron'
 
 
 function Combobox(props: ComboboxProps) {
@@ -45,34 +46,24 @@ function Combobox(props: ComboboxProps) {
                         {...getInputProps()}
                     />
                     <button type='button' {...getToggleButtonProps()} >
-                        <svg  width={'25'} style={{ transform: isOpen ? 'rotate(180deg)' : 'rotate(0deg)' }} viewBox="0 0 512 512" className="arrow">
-                            <circle stroke={'black'} cx={256} cy={256} r={250}></circle>
-                            <path strokeWidth={2} fill='var(--w-blue)' d="M464 256c0-114.87-93.13-208-208-208S48 141.13 48 256s93.13 208 208 208 208-93.13 208-208zm-99.73-44L256 342.09 147.73 212z"></path>
-                        </svg>
+                        <Chevron />
                     </button>
                 </div>
             </div>
-            <div  {...getMenuProps()}>
-                {isOpen &&
-                    <div className='listbox'>
-                        <ul>
-                {
-                    data.map((item, index) => (
+            <div className='listbox' hidden={!isOpen}>
+                <ul {...getMenuProps()}>
+                    {isOpen && data.map((item, index) => (
                         <li
-                            style={{
-                                padding: '5px',
-                                backgroundColor: highlightedIndex === index ? 'var(--w-blue)' : "inherit",
-                            }}
-                            key={`${item}${index}`}
+                            key={`${typeof item === 'string' ? item : item.itemToString()}${index}`}
+                            data-highlighted={highlightedIndex === index || undefined}
                             {...getItemProps({ item, index })}
                         >
-                           <span>{typeof(item) === 'string' ? item : item.itemToJsx()}</span>
+                            <span>{typeof(item) === 'string' ? item : item.itemToJsx()}</span>
                         </li>
                     ))}
-            </ul>
+                </ul>
             </div>
-            }
-        </div></div>
+        </div>
     )
 }
 

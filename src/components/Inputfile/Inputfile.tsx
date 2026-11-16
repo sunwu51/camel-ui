@@ -19,15 +19,13 @@ function Inputfile(props: InputfileProps) {
         }
         props.onChange && props.onChange(f);
     }
-    return <>
-        <span>
-            {props.children ? React.cloneElement(props.children, {onClick: ()=> (ref.current! as any).click()}) : <button onClick={()=>(ref.current! as any).click()}>upload</button>}
-        </span>
-        {file && 
-            <span style={{marginLeft: '10px'}}>{(file as any).name}</span>
+    return <span className="inputfile-container">
+        {props.children ? React.cloneElement(props.children, {onClick: ()=> (ref.current! as any).click()}) : <button type="button" onClick={()=>(ref.current! as any).click()}>upload</button>}
+        {file &&
+            <span className="inputfile-name">{(file as any).name}</span>
         }
-        <input type="file" name={props.name} style={{display: 'none'}} ref={ref}  onChange={()=>{onChange(); (ref.current! as any).value = ''} } />
-    </>
+        <input type="file" name={props.name} hidden ref={ref}  onChange={()=>{onChange(); (ref.current! as any).value = ''} } />
+    </span>
 }
 
 export default Inputfile

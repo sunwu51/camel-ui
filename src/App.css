@@ -1,5 +1,14 @@
+/* Demo 页专用样式(不随组件库发布) */
+body {
+    margin: 0;
+    background: var(--c-bg);
+    color: var(--c-fg);
+}
+
 .show-desc {
     display: none;
+    font-size: 0.8rem;
+    line-height: 1.1rem;
 }
 
 li .show-desc {
@@ -18,77 +27,106 @@ li .show-desc {
     line-height: 1.25rem;
 }
 
-.show-desc {
-    font-size: 0.8rem;
-    line-height: 1.1rem;
+.app-shell {
+    box-sizing: border-box;
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: var(--s-5) var(--s-4) var(--s-6);
 }
 
-.app-shell {
-    padding: 1rem;
+.app-header {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--s-3);
+    margin-bottom: var(--s-5);
+}
+
+.app-title {
+    margin: 0;
+    font-size: 1.5rem;
+    font-weight: 800;
 }
 
 .app-columns {
     display: flex;
     flex-wrap: wrap;
     align-items: flex-start;
-    gap: 1rem;
+    gap: var(--s-5);
 }
 
 .app-column {
     display: flex;
     flex-direction: column;
-    gap: 1rem;
+    gap: var(--s-5);
 }
 
 .app-divider {
     align-self: stretch;
     width: 2px;
-    background: currentColor;
-    opacity: 0.3;
+    background: var(--c-line);
+    opacity: 0.2;
 }
 
 .demo-block {
+    display: flex;
+    flex-direction: column;
+    gap: var(--s-3);
     width: 300px;
+    max-width: 100%;
 }
 
 .demo-legend {
-    font-weight: 900;
-    padding: 5px;
+    margin: 0 0 var(--s-2);
+    font-size: 1rem;
+    font-weight: 800;
 }
 
-.demo-pad {
-    padding: 5px;
+/* 同一行排列的控件: 间距一律由 gap 控制, 组件本身没有外边距 */
+.demo-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--s-3) var(--s-4);
+}
+
+.demo-stack {
+    display: flex;
+    flex-direction: column;
+    gap: var(--s-3);
 }
 
 .form-demo-section {
-    margin-top: 2rem;
+    margin-top: var(--s-6);
     max-width: 760px;
 }
 
 .form-demo-card {
-    border: 1px solid;
-    padding: 1rem;
-    box-shadow: 1px 1px var(--w-green-dark),
-        2px 2px var(--w-black-dark),
-        inset 0 0 0 2px var(--w-indigo-dark);
+    padding: var(--s-5);
+    border: 2px solid var(--c-line);
+    border-radius: var(--r-lg);
+    background: var(--c-surface);
+    box-shadow: var(--shadow-lg);
 }
 
 .form-demo-title {
-    margin: 0 0 0.375rem;
+    margin: 0 0 var(--s-1);
     font-size: 1.2rem;
-    font-weight: 700;
+    font-weight: 800;
 }
 
 .form-demo-subtitle {
-    margin: 0 0 1rem;
+    margin: 0 0 var(--s-4);
     font-size: 0.9rem;
-    line-height: 1.4;
+    line-height: 1.5;
+    color: var(--c-fg-muted);
 }
 
 .form-demo-grid {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 1rem;
+    gap: var(--s-4);
 }
 
 .form-demo-grid > * {
@@ -112,19 +150,19 @@ li .show-desc {
     font-weight: 700;
 }
 
-.form-demo-textarea {
-    min-height: 7rem;
-}
-
 .form-demo-group {
     display: flex;
     flex-wrap: wrap;
-    gap: 0.875rem 1.25rem;
+    gap: var(--s-3) var(--s-5);
     align-items: center;
 }
 
 @media (max-width: 760px) {
     .form-demo-grid {
         grid-template-columns: 1fr;
+    }
+
+    .app-divider {
+        display: none;
     }
 }

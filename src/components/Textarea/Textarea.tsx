@@ -4,13 +4,18 @@ import { cn } from '../cn'
 
 interface TextareaProps extends BaseProps {
     children?: string
+    rows?: number
+    placeholder?: string
+    disabled?: boolean
+    name?: string
 }
 
-function Textarea(props: TextareaProps) {
-    return <textarea className={cn("textarea-container" , props.className)} 
-        style={props.style}
-        defaultValue={props.children}>
-    </textarea>
+function Textarea({ className, style, children, ...rest }: TextareaProps) {
+    return (
+        <div className={cn("textarea-container", className)} style={style}>
+            <textarea defaultValue={children} {...rest} />
+        </div>
+    )
 }
 
 export default Textarea

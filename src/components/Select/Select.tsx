@@ -2,6 +2,7 @@ import { useSelect } from 'downshift'
 import './Select.css'
 import { cn } from '../cn'
 import { SelectProps } from '../../types'
+import Chevron from '../Chevron'
 
 function Select(props: SelectProps) {
     const {
@@ -29,34 +30,24 @@ function Select(props: SelectProps) {
                 {...getToggleButtonProps()}
             >
                 <span className='select-trigger-value'>{selectedItem ?? props.placeholder ?? 'select an element'}</span>
-                <svg width={'25px'} style={{ transform: isOpen ? 'rotate(180deg)' : 'rotate(0deg)' }} viewBox="0 0 512 512" className="arrow">
-                    <circle stroke={'black'} cx={256} cy={256} r={250}></circle>
-                    <path strokeWidth={2} fill='var(--w-blue)' d="M464 256c0-114.87-93.13-208-208-208S48 141.13 48 256s93.13 208 208 208 208-93.13 208-208zm-99.73-44L256 342.09 147.73 212z"></path>
-                </svg>
+                <Chevron />
             </button>
-            <div  {...getMenuProps()}>
-                {isOpen &&
-                    <div className='listbox'>
-                        <ul>
-                            {
-                                props.items.map((item, index) => (
-                                    <li
-                                        style={{
-                                            padding: '5px',
-                                            backgroundColor: highlightedIndex === index ? 'var(--w-blue)' : "inherit",
-                                        }}
-                                        key={index}
-                                        {...getItemProps({
-                                            item,
-                                            index,
-                                        })}
-                                    >
-                                        {item}
-                                    </li>
-                                ))}
-                        </ul>
-                    </div>
-                }           </div>
+            <div className='listbox' hidden={!isOpen}>
+                <ul {...getMenuProps()}>
+                    {isOpen && props.items.map((item, index) => (
+                        <li
+                            key={index}
+                            data-highlighted={highlightedIndex === index || undefined}
+                            {...getItemProps({
+                                item,
+                                index,
+                            })}
+                        >
+                            {item}
+                        </li>
+                    ))}
+                </ul>
+            </div>
         </div>
     )
 }

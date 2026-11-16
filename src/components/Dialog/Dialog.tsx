@@ -28,20 +28,27 @@ const Dialog = (props: DialogProps) => {
                 {   typeof(props.trigger) === 'string' ? props.trigger : 
                     React.cloneElement(props.trigger, {onClick: ()=>setOpen(true), onPress: ()=>setOpen(true)})}
             </span>
-            { open && <div className="dialog-backdrop" onClick={handleBackdropClick}>
+            { open && <div
+                className="dialog-backdrop"
+                onClick={handleBackdropClick}
+                onKeyDown={(event) => { if (event.key === 'Escape') setOpen(false) }}
+            >
                 <FocusScope contain restoreFocus autoFocus>
                     <div
                         {...dialogProps}
+                        aria-modal="true"
                         ref={ref}
                         className="dialog-dialog"
                         onClick={handleDialogClick}
                     >
-                        { props.title && <span {...titleProps} className="dialog-title">{props.title}</span>}
+                        <div className="dialog-header">
+                            { props.title && <h2 {...titleProps} className="dialog-title">{props.title}</h2>}
+                            <button type='button' aria-label='Close' title='Close' className='dialog-close-button' onClick={()=>setOpen(false)}>✕</button>
+                        </div>
                         <div className="dialog-content">
                             {props.children}
                         </div>
                     </div>
-                    <button className='dialog-close-button' onClick={()=>setOpen(false)}>X</button>
                 </FocusScope>
             </div>
             }

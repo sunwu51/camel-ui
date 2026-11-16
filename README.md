@@ -2,7 +2,13 @@
 <img src="logo.png" alt="Description" width="80" height="80">
 
 # 样式预览
-![image](https://i.imgur.com/NqTbIwS.png)
+浅色（默认，也可通过 `<html data-theme="light">` 强制）：
+
+![light](https://raw.githubusercontent.com/sunwu51/camel-ui/main/docs/preview-light.png)
+
+深色（跟随系统，或 `<html data-theme="dark">`）：
+
+![dark](https://raw.githubusercontent.com/sunwu51/camel-ui/main/docs/preview-dark.png)
 
 
 # 使用方法

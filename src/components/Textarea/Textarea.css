@@ -1,23 +1,13 @@
+/* 控件本体外观在 index.css 的 "form-control base" 中 */
 .textarea-container {
-    width: 100%;
-    min-height: 5.5rem;
-    border: 1px solid;
-    box-shadow: 1px 1px var(--w-green-dark),
-        2px 2px var(--w-black-dark),
-        inset 0 0 0 2px var(--w-indigo-dark);
-    margin: 0 2px 2px 0;
-    padding: 0.5rem 0.75rem;
-    border-radius: 0.125rem;
     box-sizing: border-box;
-    font-size: 0.95rem;
-    line-height: 1.5;
-    resize: vertical;
-    transition: .4s;
+    width: 100%;
+    /* 给阴影预留空间, 组件自身不设 margin */
+    padding: 0 var(--shadow-reserve) var(--shadow-reserve) 0;
 }
 
-.textarea-container:hover,
-.textarea-container:focus {
-    box-shadow: 2px 2px var(--w-green),
-        3px 3px var(--w-black-dark),
-        inset 0 0 0 2px var(--w-black);
+.textarea-container textarea {
+    display: block;
+    min-height: 5.5rem;
+    resize: vertical;
 }

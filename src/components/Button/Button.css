@@ -1,34 +1,60 @@
 .button {
-    position: relative;
-    display: inline-block;
-    padding: 0.5rem 1rem;
-    border: 2px solid black;
-    border-radius: 0.5rem;
-    background: var(--w-blue);
-    box-shadow: 2px 2px var(--w-green-dark), 4px 4px var(--w-black-dark);
-    transition: all 100ms ease;
-    font-weight: bold;
-    margin: 0 5px 5px 0;
+    --btn-bg: var(--c-primary);
+    --btn-fg: var(--c-on-soft);
+    --btn-bg-hover: var(--c-primary-hover);
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--s-2);
+    padding: var(--s-2) var(--s-4);
+    border: 2px solid var(--c-line);
+    border-radius: var(--r-md);
+    background: var(--btn-bg);
+    color: var(--btn-fg);
+    box-shadow: var(--shadow);
+    font-weight: 700;
+    line-height: 1.5;
     cursor: pointer;
+    transition: transform var(--dur) ease, box-shadow var(--dur) ease, background-color var(--dur) ease, color var(--dur) ease;
 }
 
-.button:hover {
-    background: var(--w-blue-dark);
-    color: var(--w-white);
-    box-shadow: 2px 2px var(--w-green-light), 4px 4px var(--w-black-light);
+.button-success { --btn-bg: var(--c-success); --btn-bg-hover: var(--c-success-hover); }
+.button-warning { --btn-bg: var(--c-warning); --btn-bg-hover: var(--c-warning-hover); }
+.button-danger { --btn-bg: var(--c-danger); --btn-bg-hover: var(--c-danger-hover); }
+/* 小号: 用于工具栏、卡片头部等紧凑场景 */
+.button-sm {
+    min-height: 1.75rem;
+    padding: 2px var(--s-3);
+    border-radius: var(--r-sm);
+    font-size: 0.8rem;
+    box-shadow: var(--shadow-sm);
 }
 
-.button:active {
-    border: 2px double;
-    box-shadow: 0px 0px;
-    transform: translateX(3px) translateY(3px);
+.button-neutral { --btn-bg: var(--c-surface); --btn-fg: var(--c-fg); --btn-bg-hover: var(--c-muted); }
+
+@media (hover: hover) {
+    .button:hover:not(:disabled) {
+        background: var(--btn-bg-hover);
+        transform: translate(-1px, -1px);
+        box-shadow: var(--shadow-lg);
+    }
 }
 
-.button:disabled,
-.button:disabled:active {
-    opacity: 0.4;
-    filter: grayscale(1);
-    border: 2px dashed;
-    box-shadow: 2px 2px var(--w-red-dark), 4px 4px var(--w-red-dark);
-    transform: translateX(0px) translateY(0px);
+.button:active:not(:disabled) {
+    transform: translate(3px, 3px);
+    box-shadow: 0 0 0 0 var(--c-shadow);
+}
+
+.button:focus-visible {
+    outline: none;
+    box-shadow: var(--shadow-focus);
+}
+
+.button:disabled {
+    background: var(--c-muted);
+    color: var(--c-fg-muted);
+    border-color: var(--c-fg-muted);
+    box-shadow: var(--shadow-muted);
+    cursor: not-allowed;
 }

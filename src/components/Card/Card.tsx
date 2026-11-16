@@ -4,7 +4,7 @@ import { CardProps } from '../../types';
 
 
 function Card(props: CardProps) {
-    return <div className={cn("card-container ", props.className)} style={{...props.style}}>
+    return <div className={cn("card-container", props.className)} style={{...props.style}}>
         {props.children}
     </div>
 }

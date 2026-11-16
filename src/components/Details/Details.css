@@ -1,18 +1,34 @@
 .details-container {
-    padding: 5px;
     display: flex;
     flex-direction: column;
+    gap: var(--s-2);
     width: 100%;
 }
+
 .details-title {
     display: flex;
     width: 100%;
     justify-content: space-between;
     align-items: center;
+    gap: var(--s-3);
+    padding: var(--s-1) 0;
+    border-radius: var(--r-sm);
+    background: transparent;
+    color: inherit;
+    font-weight: 700;
+    text-align: start;
+    cursor: pointer;
 }
-.details-trigger-button {
-    width: fit-content;
+
+.details-title:focus-visible {
+    outline: var(--focus-outline);
+    outline-offset: 2px;
 }
+
+.details-title[aria-expanded="false"] .arrow {
+    transform: rotate(-90deg);
+}
+
 .details-content {
-    animation: fadeIn 0.5s forwards;
+    animation: camel-fade-in var(--dur-slow) ease-out;
 }

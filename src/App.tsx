@@ -14,6 +14,7 @@ import Tooltip from './components/Tooltip/Tooltip';
 import Details from './components/Details/Details';
 import { ComboboxItem, Combobox } from './components/Combobox/Combobox';
 
+import React from 'react';
 import './App.css'
 
 const colors = [
@@ -34,7 +35,7 @@ const colors = [
 ]
 
 const richColorOptions = colors.map((item) => (
-    <div className='demo-option'>
+    <div className='demo-option' key={item}>
         <span className='demo-option-title'>{item}</span>
         <p className='show-desc'>color {item}</p>
     </div>
@@ -66,47 +67,61 @@ function getFilter(inputValue: string) {
     }
 }
 
+type Theme = 'auto' | 'light' | 'dark'
+const themeLabels: Record<Theme, string> = { auto: '跟随系统', light: '浅色', dark: '深色' }
+const nextTheme: Record<Theme, Theme> = { auto: 'light', light: 'dark', dark: 'auto' }
+
 function App() {
+    const [theme, setTheme] = React.useState<Theme>('auto')
+    React.useEffect(() => {
+        const root = document.documentElement
+        if (theme === 'auto') root.removeAttribute('data-theme')
+        else root.setAttribute('data-theme', theme)
+    }, [theme])
+
     return (
         <div className='app-shell'>
+            <header className='app-header'>
+                <h1 className='app-title'>camel-ui</h1>
+                <Button variant='neutral' onPress={() => setTheme(nextTheme[theme])}>主题: {themeLabels[theme]}</Button>
+            </header>
             <div className='app-columns'>
                 <div className='app-column'>
                     <div className='demo-block'>
-                        <legend className='demo-legend'>组件1: Button</legend>
-                        <Button>Default</Button>
-                        <Button isDisabled={true}>Disable</Button>
-                        <Button className='bg-[var(--w-red)] hover:bg-[var(--w-red-dark)]'>Red</Button>
+                        <h3 className='demo-legend'>组件1: Button</h3>
+                        <div className='demo-row'>
+                            <Button>Default</Button>
+                            <Button variant='success'>Success</Button>
+                            <Button variant='warning'>Warning</Button>
+                            <Button variant='danger'>Danger</Button>
+                            <Button variant='neutral'>Neutral</Button>
+                            <Button isDisabled={true}>Disable</Button>
+                        </div>
                     </div>
                     <div className='demo-block'>
-                        <legend className='demo-legend'>组件2: Card</legend>
+                        <h3 className='demo-legend'>组件2: Card</h3>
                         <Card>
-                            <legend className='demo-legend'>组件3: Dialog</legend>
+                            <h3 className='demo-legend'>组件3: Dialog</h3>
                             <Dialog title={"This is title"} trigger={<Button>openDialog</Button>}>
-                                <div style={{ color: 'var(--w-yellow-dark)' }}>
-                                    <h1 style={{ fontSize: '28px', fontWeight: 'bold' }}>Click outside to close</h1>
-                                </div>
+                                <p>Click outside, press Esc or the ✕ button to close.</p>
                             </Dialog>
                         </Card>
                     </div>
                     <div>
-                        <legend className='demo-legend'>组件4: Inputfile</legend>
-                        <div style={{ padding: '10px' }}>
-                            <div>
-                                <Inputfile onChange={console.log}>
-                                    <Button>Upload</Button>
-                                </Inputfile>
-                            </div>
+                        <h3 className='demo-legend'>组件4: Inputfile</h3>
+                        <Inputfile onChange={console.log}>
+                            <Button>Upload</Button>
+                        </Inputfile>
+                    </div>
+                    <div>
+                        <h3 className='demo-legend'>组件5: Textarea</h3>
+                        <div>
+                            <Textarea className='w-[300px]' placeholder='write something'>123</Textarea>
                         </div>
                     </div>
                     <div>
-                        <legend className='demo-legend'>组件5: Textarea</legend>
-                        <div className='demo-pad'>
-                            <Textarea className='w-[288px]'>123</Textarea>
-                        </div>
-                    </div>
-                    <div>
-                        <legend className='demo-legend'>组件6: Tabs</legend>
-                        <div className='demo-pad'>
+                        <h3 className='demo-legend'>组件6: Tabs</h3>
+                        <div>
                             <Tabs aria-label="">
                                 <Item title="tab1" key="tab1">Panel 1</Item>
                                 <Item title="tab2" key="tab2">Panel 2</Item>
@@ -118,8 +133,9 @@ function App() {
                 <div className='app-divider'></div>
                 <div className='app-column'>
                     <div className='demo-block'>
-                        <legend className='demo-legend'>组件7: Input</legend>
+                        <h3 className='demo-legend'>组件7: Input</h3>
                         <Input label="name:" placeholder="input your name"></Input>
+                        <Input label="email:" placeholder="name@example.com" errorMessage="invalid email" isInvalid></Input>
                         <Input isDisabled={true} placeholder="disable"></Input>
                     </div>
                     <div className='demo-block'>
@@ -133,13 +149,13 @@ function App() {
                 </div>
                 <div className='app-divider'></div>
                 <div className='app-column'>
-                    <legend className='demo-legend'>组件10: Details</legend>
+                    <h3 className='demo-legend'>组件10: Details</h3>
                     <Card style={{ width: '400px' }}>
                         <Details title={"This is a title open to see details"}
                             children={<h1 style={{ fontSize: '3rem' }}>Hello World~</h1>}
                         ></Details>
                     </Card>
-                    <div className='demo-pad'>
+                    <div>
                         <RadioGroup label='组件11: Radio' defaultValue={"dog"}>
                             <Radio value='cat' id='c1'>Cat</Radio>
                             <Radio value='dog'>Dog</Radio>
@@ -147,8 +163,8 @@ function App() {
                         </RadioGroup>
                     </div>
                     <div>
-                        <legend className='demo-legend'>组件12: Checkbox</legend>
-                        <div className='demo-pad flex gap-2'>
+                        <h3 className='demo-legend'>组件12: Checkbox</h3>
+                        <div className='demo-row'>
                             <Checkbox>use react</Checkbox>
                             <Checkbox defaultSelected={true}>use vue</Checkbox>
                             <Checkbox isDisabled={true}>disable</Checkbox>
@@ -157,32 +173,31 @@ function App() {
 
                     </div>
                     <div>
-                        <legend className='demo-legend'>组件13: Switch</legend>
-                        <div className='demo-pad flex gap-2'>
+                        <h3 className='demo-legend'>组件13: Switch</h3>
+                        <div className='demo-row'>
                             <Switch defaultSelected={true}>normal</Switch>
                             <Switch round={true}>round</Switch>
                             <Switch round={true} isDisabled={true}>disabled</Switch>
                         </div>
                     </div>
                     <div>
-                        <legend className='demo-legend'>组件14: Badge</legend>
-                        <div style={{ padding: '10px' }}>
-                            <Badge>default</Badge> &nbsp;
-                            <Badge className='bg-[var(--w-red-dark)]'>red-dark</Badge> &nbsp;
-                            <Badge className='bg-[var(--w-yellow-dark)]'>yellow-dark</Badge> &nbsp;
-                            <Badge className='bg-[var(--w-green-dark)]'>green-dark</Badge> &nbsp;
+                        <h3 className='demo-legend'>组件14: Badge</h3>
+                        <div className='demo-row'>
+                            <Badge>default</Badge>
+                            <Badge variant='success'>success</Badge>
+                            <Badge variant='warning'>warning</Badge>
+                            <Badge variant='danger'>danger</Badge>
+                            <Badge variant='neutral'>neutral</Badge>
                         </div>
                     </div>
                     <div>
-                        <legend className='demo-legend'>组件15: Tooltip</legend>
-                        <div style={{ padding: '10px' }}>
+                        <h3 className='demo-legend'>组件15: Tooltip</h3>
+                        <div className='demo-row' style={{ paddingTop: '2.5rem' }}>
                             <Tooltip overlay={<span>Tooltip text</span>}>
                                 Hover or focus me
                             </Tooltip>
-
-                            <span> | </span>
-                            <Tooltip isOpen={true} overlay={<span>Tooltip text</span>}>
-                                Hover or focus me
+                            <Tooltip isOpen={true} overlay={<span>Always open</span>}>
+                                Pinned tooltip
                             </Tooltip>
                         </div>
                     </div>
@@ -190,7 +205,7 @@ function App() {
             </div>
 
             <section className='form-demo-section'>
-                <legend className='demo-legend'>组件16: Form Demo</legend>
+                <h3 className='demo-legend'>组件16: Form Demo</h3>
                 <div className='form-demo-card'>
                     <h2 className='form-demo-title'>成员信息表单</h2>
                     <p className='form-demo-subtitle'>
@@ -205,7 +220,7 @@ function App() {
                         <Select label='办公模式' items={workModes} placeholder='请选择办公模式' />
                         <div className='form-demo-field form-demo-full'>
                             <label className='form-demo-label'>备注</label>
-                            <Textarea className='form-demo-textarea'>负责组件库维护、业务表单搭建和设计规范落地。</Textarea>
+                            <Textarea rows={5}>负责组件库维护、业务表单搭建和设计规范落地。</Textarea>
                         </div>
                         <div className='form-demo-field form-demo-full'>
                             <span className='form-demo-label'>通知方式</span>

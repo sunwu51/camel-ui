@@ -6,12 +6,18 @@ import {  TooltipTriggerState } from "@react-stately/tooltip";
 
 
 
-export interface ButtonProps extends BaseProps, AriaButtonOptions<'button'> {}
-export interface BadgeProps extends BaseProps {}
+export type Variant = 'primary' | 'success' | 'warning' | 'danger' | 'neutral'
+
+export interface ButtonProps extends BaseProps, AriaButtonOptions<'button'> {
+    variant?: Variant
+    size?: 'sm' | 'md'
+    title?: string
+}
+export interface BadgeProps extends BaseProps {
+    variant?: Variant
+}
 export interface CardProps extends BaseProps {}
 export interface CheckboxProps extends BaseProps, ToggleStateOptions, AriaCheckboxProps {}
-export interface BadgeProps extends BaseProps {}
-export interface BadgeProps extends BaseProps {}
 export interface ComboboxProps extends BaseProps {
     label?: React.ReactNode,
     items: ComboboxItem[],
@@ -40,6 +46,11 @@ export interface InputProps extends BaseProps, AriaTextFieldProps {
     labelClassName?: string,
     inputClassName?: string,
     direction?: 'row' | 'column',
+    /** type="password" 时是否显示"显示/隐藏"小眼睛, 默认 true */
+    passwordToggle?: boolean,
+    /** 小眼睛按钮的无障碍文案(便于国际化), 默认 "Show password" / "Hide password" */
+    showPasswordLabel?: string,
+    hidePasswordLabel?: string,
 }
 
 export interface RadioGroupProps extends BaseProps, AriaRadioGroupProps {

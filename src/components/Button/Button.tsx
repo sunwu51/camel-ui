@@ -4,14 +4,15 @@ import { cn } from '../cn';
 import {type ButtonProps} from '../../types'
 import './Button.css'
 
-function Button({className = '', style, ...props } : ButtonProps) {
+function Button({className = '', style, variant, size, ...props } : ButtonProps) {
   const ref = React.useRef(null);
   const { buttonProps } = useButton(props, ref);
   return (
     <button
       ref={ref}
-      className={cn('button',className)}
+      className={cn('button', variant && variant !== 'primary' && `button-${variant}`, size === 'sm' && 'button-sm', className)}
       style={{ ...style }}
+      title={props.title}
       {...buttonProps}
     >
       {props.children}

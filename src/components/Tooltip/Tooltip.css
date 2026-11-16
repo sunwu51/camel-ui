@@ -1,43 +1,54 @@
-/* Tooltip container */
 .tooltip-container {
     position: relative;
     display: inline-block;
 }
 
-.tooltip-container:hover, .tooltip-container:focus {
-    border-bottom: 1px dotte black;
+.tooltip-trigger {
+    padding: 0;
+    border-radius: var(--r-sm);
+    background: transparent;
+    color: inherit;
+    font: inherit;
+    text-decoration: underline dotted;
+    text-underline-offset: 4px;
+    cursor: help;
 }
 
-/* Tooltip text */
+.tooltip-trigger:focus-visible {
+    outline: var(--focus-outline);
+    outline-offset: 2px;
+}
+
 .tooltip-container .tooltiptext {
-    background-color: transparent;
-    color: #fff;
-    text-align: center;
     position: absolute;
-    z-index: 1;
+    z-index: var(--z-tooltip);
     bottom: 100%;
     left: 50%;
     transform: translateX(-50%);
-    display: flex;
-    justify-content: center;
-    width: 100%;
+    margin-bottom: var(--s-2);
+    width: max-content;
+    max-width: 16rem;
+    pointer-events: none;
 }
 
-.tooltip-container .tooltiptext div {
-
-    border-radius: 6px;
-    padding: 5px;
-    background-color: var(--w-indigo-dark);
+.tooltip-container .tooltiptext > div {
+    padding: var(--s-1) var(--s-2);
+    border-radius: var(--r-sm);
+    background: var(--c-line);
+    color: var(--c-surface);
+    font-size: 0.85rem;
+    line-height: 1.3;
+    text-align: center;
+    animation: camel-fade-in var(--dur) ease-out;
 }
 
-/* Tooltip arrow */
+/* 箭头 */
 .tooltip-container .tooltiptext::after {
     content: "";
     position: absolute;
     top: 100%;
     left: 50%;
     margin-left: -5px;
-    border-width: 5px;
-    border-style: solid;
-    border-color: var(--w-indigo-dark) transparent transparent transparent;
+    border: 5px solid transparent;
+    border-top-color: var(--c-line);
 }

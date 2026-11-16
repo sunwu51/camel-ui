@@ -1,8 +1,17 @@
 .badge-container {
-    padding: 2px 4px;
-    background-color: var(--w-blue-dark);
-    font-weight: 800;
-    color: var(--w-white);
+    display: inline-flex;
+    align-items: center;
+    padding: 2px var(--s-2);
+    border: 2px solid var(--c-line);
+    border-radius: var(--r-sm);
+    background: var(--c-primary-strong);
+    color: #fff;
     font-size: 0.8rem;
-    border-radius: 4px;
+    font-weight: 700;
+    line-height: 1.25;
 }
+
+.badge-success { background: var(--c-success-strong); }
+.badge-warning { background: var(--c-warning-strong); }
+.badge-danger { background: var(--c-danger-strong); }
+.badge-neutral { background: var(--c-muted); color: var(--c-fg); }

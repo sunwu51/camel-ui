@@ -14,7 +14,7 @@ function Checkbox(props: CheckboxProps) {
         <div className="checkbox-container">
             <label
                 style={{
-                    opacity: props.isDisabled ? 0.4 : 1,
+                    opacity: props.isDisabled ? 0.5 : 1,
                     ...props.style
                 }}
             >

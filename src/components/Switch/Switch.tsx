@@ -15,13 +15,10 @@ function Switch(props: SwitchProps) {
     const { focusProps } = useFocusRing();
     return <>
         <div className={cn('switch-container', props.className)} style={{...props.style}}>
-            <label className="switch-label" style={{
-                    opacity: props.isDisabled ? 0.4 : 1,
-                    ...props.style
-                }}>
-                <input type="checkbox"  {...inputProps} {...focusProps} ref={ref} style={{ display: 'none' }} />
-                <span className={`slider ${props.round? 'round' :''}`}></span>
-                <span style={{marginLeft: '45px'}}>{props.children}</span>
+            <label className="switch-label" style={{ opacity: props.isDisabled ? 0.5 : 1 }}>
+                <input type="checkbox" role="switch" {...inputProps} {...focusProps} ref={ref} />
+                <span className={cn('slider', props.round && 'round')}></span>
+                {props.children && <span>{props.children}</span>}
             </label>
         </div>
     </>

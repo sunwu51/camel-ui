@@ -2,7 +2,86 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ==========================================================================
+   Design tokens
+   命名规则: --c-* 颜色 / --r-* 圆角 / --s-* 间距 / --shadow-* 阴影 / --dur 动效 / --z-* 层级
+   ========================================================================== */
 :root {
+    color-scheme: light;
+
+    /* surfaces & text */
+    --c-bg: #fbfaf6;
+    --c-surface: #ffffff;
+    --c-muted: #efeee8;
+    --c-fg: #171717;
+    --c-fg-muted: #5c5c57;
+    --c-line: #171717;      /* 边框 */
+    --c-shadow: #171717;    /* 硬阴影 */
+    --c-focus: #1a6dff;     /* 焦点环 */
+    --c-on-soft: #171717;   /* 放在 soft 色块上的文字 */
+
+    /* status colors: soft = 填充底色(配深色文字), strong = hover / badge(配白字), tint = 高亮底 */
+    --c-accent: #ffcc00;          /* 选中态里的勾 / 圆点 / 滑块: 明黄 */
+    --c-primary: #73bcec;
+    --c-primary-hover: #55aee6;   /* 按钮 hover: 仍是浅蓝系, 文字保持深色 */
+    --c-primary-strong: #1e3a8a;
+    --c-primary-tint: #e1f1fc;
+
+    --c-success: #6ee7a0;
+    --c-success-hover: #3fd081;
+    --c-success-strong: #15803d;
+
+    --c-warning: #ffd23f;
+    --c-warning-hover: #ffbf1f;
+    --c-warning-strong: #b45309;
+
+    --c-danger: #ff8a8a;
+    --c-danger-hover: #ff6b6b;
+    --c-danger-strong: #dc2626;
+    --c-danger-text: #c81e1e; /* 错误文字(浅色底) */
+
+    /* radius: 控件 md, 小元素 sm, 容器 lg */
+    --r-sm: 4px;
+    --r-md: 8px;
+    --r-lg: 12px;
+
+    /* spacing scale (4px 基准) */
+    --s-1: 4px;
+    --s-2: 8px;
+    --s-3: 12px;
+    --s-4: 16px;
+    --s-5: 24px;
+    --s-6: 32px;
+
+    /* hard shadow. 组件自身 margin 为 0, 外层容器用 --shadow-reserve 给阴影预留空间 */
+    --shadow-sm: 2px 2px 0 0 var(--c-shadow);
+    --shadow: 3px 3px 0 0 var(--c-shadow);
+    --shadow-lg: 4px 4px 0 0 var(--c-shadow);
+    --shadow-xl: 6px 6px 0 0 var(--c-shadow);
+    --shadow-reserve: 4px;
+    /* 禁用态: 保留同样大小的灰色阴影, 使占位与可用状态对齐 */
+    --shadow-muted-sm: 2px 2px 0 0 var(--c-fg-muted);
+    --shadow-muted: 3px 3px 0 0 var(--c-fg-muted);
+
+    /* 聚焦: 沿用硬阴影语言, 阴影变成主色并加大, 不再额外加一圈 outline */
+    --shadow-focus: 4px 4px 0 0 var(--c-focus);
+    /* 本身没有阴影的元素(Details / Tabs / Tooltip 触发器等)改用细环 */
+    --focus-outline: 2px solid var(--c-focus);
+
+    /* motion: 减少动态效果时整体置 0 */
+    --dur: 120ms;
+    --dur-slow: 160ms;
+
+    /* z-index */
+    --z-popover: 50;
+    --z-tooltip: 60;
+    --z-modal: 100;
+
+    --font-size-control: 0.95rem;
+    --control-height: 2.75rem;
+
+    /* ---- legacy variables (deprecated) ----
+       保持与旧版完全相同的固定色值, 不随主题变化, 以兼容依赖它们的使用方. 新代码请使用 --c-* token. */
     --w-white-light: #fffefe;
     --w-white-dark: #e6e6e6;
     --w-white: var(--w-white-light);
@@ -40,37 +119,168 @@
     --w-violet: var(--w-violet-light);
     --w-box-shadow: 2px 2px var(--w-green-dark), 4px 4px var(--w-black-dark);
 }
-:focus {
-    outline: none;
+
+/* 深色: 跟随系统, 也可通过 <html data-theme="dark|light"> 强制 */
+@media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+        color-scheme: dark;
+        --c-bg: #131316;
+        --c-surface: #1c1c21;
+        --c-muted: #2a2a31;
+        --c-fg: #f3f3f5;
+        --c-fg-muted: #a3a3ae;
+        --c-line: #d9d9e0;
+        --c-shadow: #5d5d6e;
+        --c-focus: #9dbcff;
+        --c-primary-tint: #27324f;
+        --c-danger-text: #ff8a8a;
+    }
 }
 
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-    }
+:root[data-theme="dark"] {
+    color-scheme: dark;
+    --c-bg: #131316;
+    --c-surface: #1c1c21;
+    --c-muted: #2a2a31;
+    --c-fg: #f3f3f5;
+    --c-fg-muted: #a3a3ae;
+    --c-line: #d9d9e0;
+    --c-shadow: #5d5d6e;
+    --c-focus: #9dbcff;
+    --c-primary-tint: #27324f;
+    --c-danger-text: #ff8a8a;
+}
 
-    to {
-        opacity: 1;
+@media (prefers-reduced-motion: reduce) {
+    :root {
+        --dur: 0ms;
+        --dur-slow: 0ms;
     }
+}
+
+/* ==========================================================================
+   Shared keyframes & form-control base
+   所有文本类控件(Input / Textarea / Select / Combobox)共用一套外观
+   ========================================================================== */
+@keyframes camel-fade-in {
+    from { opacity: 0; transform: translateY(-2px); }
+    to { opacity: 1; transform: none; }
+}
+
+.input-container input,
+.textarea-container textarea,
+.select-container > button,
+.combobox-input {
+    box-sizing: border-box;
+    width: 100%;
+    min-height: var(--control-height);
+    padding: var(--s-2) var(--s-3);
+    border: 2px solid var(--c-line);
+    border-radius: var(--r-md);
+    background: var(--c-surface);
+    color: var(--c-fg);
+    box-shadow: var(--shadow-sm);
+    font: inherit;
+    font-size: var(--font-size-control);
+    line-height: 1.5;
+    transition: box-shadow var(--dur) ease, border-color var(--dur) ease, background-color var(--dur) ease;
+}
+
+.input-container input::placeholder,
+.textarea-container textarea::placeholder,
+.combobox-input input::placeholder {
+    color: var(--c-fg-muted);
+    opacity: 1;
+}
+
+@media (hover: hover) {
+    .input-container input:hover:not(:disabled),
+    .textarea-container textarea:hover:not(:disabled),
+    .select-container > button:hover:not(:disabled),
+    .combobox-input:hover:not(.is-disabled) {
+        box-shadow: var(--shadow);
+    }
+}
+
+.input-container input:focus-visible,
+.textarea-container textarea:focus-visible,
+.select-container > button:focus-visible,
+.combobox-input:focus-within {
+    outline: none;
+    box-shadow: var(--shadow-focus);
+}
+
+.input-container input:disabled,
+.textarea-container textarea:disabled,
+.select-container > button:disabled {
+    background: var(--c-muted);
+    color: var(--c-fg-muted);
+    box-shadow: var(--shadow-muted-sm);
+    cursor: not-allowed;
+}
+
+.input-container input[aria-invalid="true"],
+.textarea-container textarea[aria-invalid="true"] {
+    border-color: var(--c-danger-strong);
+}
+
+/* 下拉浮层(Select / Combobox 共用) */
+.listbox {
+    position: absolute;
+    z-index: var(--z-popover);
+    top: 100%;
+    left: 0;
+    right: var(--shadow-reserve);
+    margin-top: var(--s-1);
+    padding: var(--s-1);
+    border: 2px solid var(--c-line);
+    border-radius: var(--r-md);
+    background: var(--c-surface);
+    color: var(--c-fg);
+    box-shadow: var(--shadow-lg);
+    font-size: var(--font-size-control);
+    line-height: 1.4;
+    animation: camel-fade-in var(--dur-slow) ease-out;
+}
+
+.listbox[hidden] {
+    display: none;
+}
+
+.listbox ul {
+    max-height: 15rem;
+    margin: 0;
+    padding: 0;
+    overflow-y: auto;
+    list-style: none;
+    scrollbar-width: thin;
+    scrollbar-color: var(--c-line) transparent;
+}
+
+.listbox li {
+    padding: var(--s-2) var(--s-3);
+    border-radius: var(--r-sm);
+    cursor: pointer;
+}
+
+.listbox li :where(h1, h2, h3, h4, h5, h6, p) {
+    margin: 0;
+}
+
+.listbox li[data-highlighted] {
+    background: var(--c-primary-tint);
+}
+
+.listbox li[aria-selected="true"] {
+    font-weight: 700;
+}
+
+/* 下拉箭头(Select / Combobox / Details 共用 Chevron) */
+.arrow {
+    flex-shrink: 0;
+    transition: transform var(--dur-slow) ease;
 }
 
 .material-symbols-outlined {
     font-family: 'Material Symbols Outlined';
-}
-
-::-webkit-scrollbar {
-    cursor: pointer;
-    width: 0.5rem; 
-}
-  
-::-webkit-scrollbar-track {
-    background: #f1f1f1;
-}
-  
-::-webkit-scrollbar-thumb {
-    background: var(--w-blue);; 
-}
-  
-::-webkit-scrollbar-thumb:hover {
-    background: var(--w-blue-dark);
 }

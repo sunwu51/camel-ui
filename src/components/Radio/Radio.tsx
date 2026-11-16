@@ -14,16 +14,16 @@ function RadioGroup(props: RadioGroupProps) {
 
     return (
         <div {...radioGroupProps} className={cn('radio-group-container',props.className)} style={{...props.style}}>
-            <span {...labelProps}>{label}</span>
+            {label && <span {...labelProps} className="radio-group-label">{label}</span>}
             <RadioContext.Provider value={state}>
                 {children}
             </RadioContext.Provider>
             {description && (
-                <div {...descriptionProps} style={{ fontSize: 12 }}>{description}</div>
+                <div {...descriptionProps} className="radio-description">{description}</div>
             )}
             {errorMessage &&
                 (
-                    <div {...errorMessageProps} style={{ color: 'red', fontSize: 12 }}>
+                    <div {...errorMessageProps} className="radio-error">
                         {errorMessage as React.ReactNode}
                     </div>
                 )}
@@ -37,8 +37,8 @@ function Radio(props: RadioProps) {
     const ref = React.useRef(null);
     const { inputProps } = useRadio(props, state, ref);
     return (
-        <label className={'radio-container ' + props.className} style={{
-            opacity: props.isDisabled ? 0.4 : 1,
+        <label className={cn('radio-container', props.className)} style={{
+            opacity: props.isDisabled ? 0.5 : 1,
             ...props.style
         }}>
             <input {...inputProps} ref={ref} type='radio'/>

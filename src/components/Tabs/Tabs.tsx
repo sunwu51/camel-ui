@@ -12,7 +12,7 @@ interface ItemProps extends BaseProps {
 interface TabsProps extends BaseProps{
   children: React.ReactElement<ItemProps>|React.ReactElement<ItemProps>[];
   defaultIndex?: number;
-  fixedIndex?: number; 
+  fixedIndex?: number;
   handleChange?: (index: number)=>void;
   'aria-label'?: string;
   tabBtnClassName?: string;
@@ -29,14 +29,18 @@ function Tabs({ children, defaultIndex=0, fixedIndex, handleChange, ...props }: 
   if (!Array.isArray(children)) {
       children = [children]
   }
-  const [currentIndex, setCurrentIndex] = React.useState(defaultIndex===undefined ? -1 : defaultIndex)
+  const [innerIndex, setCurrentIndex] = React.useState(defaultIndex===undefined ? -1 : defaultIndex)
+  const currentIndex = fixedIndex ?? innerIndex
   return (
-    <div className={cn('tabs-container',props.className)}>
-        <div className={'tabs-button-container'} >
+    <div className={cn('tabs-container',props.className)} style={props.style}>
+        <div className={'tabs-button-container'} role="tablist" aria-label={props['aria-label']}>
             {(children as React.ReactElement<ItemProps>[]).map((item, index) => (
                 <button
+                    type="button"
+                    role="tab"
+                    aria-selected={index == currentIndex}
                     className={cn(index == currentIndex ? 'tabs-button-selected' : 'tabs-button', props.tabBtnClassName)}
-                    key={index} onClick={() => { 
+                    key={index} onClick={() => {
                         if (fixedIndex === undefined) {
                             setCurrentIndex(index)
                         } else {
@@ -47,7 +51,7 @@ function Tabs({ children, defaultIndex=0, fixedIndex, handleChange, ...props }: 
                 </button>
             ))}
         </div>
-        {children.map((item, index) => (<div className={cn((index == currentIndex ? "tabs-panel-selected":'tabs-panel'), props.tabPanelClassName)} key={index}>{item}</div>))}
+        {children.map((item, index) => (<div role="tabpanel" className={cn((index == currentIndex ? "tabs-panel-selected":'tabs-panel'), props.tabPanelClassName)} key={index}>{item}</div>))}
     </div >
   );
 }

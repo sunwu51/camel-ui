@@ -30,6 +30,8 @@ function TooltipTrigger(props: TriggerProps) {
     return (
         <div className='tooltip-container'>
             <button
+                type='button'
+                className='tooltip-trigger'
                 {...triggerProps}
                 ref={ref}
             >
