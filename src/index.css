@@ -159,6 +159,33 @@
 }
 
 /* ==========================================================================
+   Scrollbar
+   0.0.7 去掉了全局滚动条样式, 业务页面里只要写了 ::-webkit-scrollbar 就会变成透明。
+   这里统一用令牌上色, 深色模式自动跟随。
+   ========================================================================== */
+::-webkit-scrollbar {
+    width: 0.5rem;
+    height: 0.5rem;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--c-muted);
+}
+
+::-webkit-scrollbar-thumb {
+    border-radius: var(--r-sm);
+    background: var(--c-line);
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--c-fg-muted);
+}
+
+::-webkit-scrollbar-corner {
+    background: var(--c-muted);
+}
+
+/* ==========================================================================
    Shared keyframes & form-control base
    所有文本类控件(Input / Textarea / Select / Combobox)共用一套外观
    ========================================================================== */
