@@ -64,6 +64,8 @@ export interface SelectProps extends BaseProps {
     defaultIndex?: number,
     placeholder?: string,
     label?: string | ReactNode,
+    /** 没有可见 label 时, 给下拉按钮提供无障碍名称 */
+    'aria-label'?: string,
     items: string[] | ReactNode[],
     onSelectedItemChange?: (changes: unknown) => void
 }

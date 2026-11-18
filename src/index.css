@@ -174,11 +174,11 @@
 
 ::-webkit-scrollbar-thumb {
     border-radius: var(--r-sm);
-    background: var(--c-line);
+    background: var(--c-primary);
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background: var(--c-fg-muted);
+    background: var(--c-primary-hover);
 }
 
 ::-webkit-scrollbar-corner {
@@ -281,7 +281,7 @@
     overflow-y: auto;
     list-style: none;
     scrollbar-width: thin;
-    scrollbar-color: var(--c-line) transparent;
+    scrollbar-color: var(--c-primary) transparent;
 }
 
 .listbox li {

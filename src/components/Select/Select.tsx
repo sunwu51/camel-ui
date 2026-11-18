@@ -27,7 +27,9 @@ function Select(props: SelectProps) {
                 </label>
             )}
             <button
-                {...getToggleButtonProps()}
+                {...getToggleButtonProps(props['aria-label'] && !props.label
+                    ? { 'aria-label': props['aria-label'], 'aria-labelledby': undefined }
+                    : undefined)}
             >
                 <span className='select-trigger-value'>{selectedItem ?? props.placeholder ?? 'select an element'}</span>
                 <Chevron />
