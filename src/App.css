@@ -166,3 +166,19 @@ li .show-desc {
         display: none;
     }
 }
+
+/* Input 后面跟 Button: 使用方最常见的写法 */
+.demo-input-btn {
+    display: flex;
+    align-items: center;
+    gap: var(--s-2);
+}
+
+.demo-input-btn-end {
+    align-items: flex-end;
+}
+
+.demo-input-btn > :not(button) {
+    flex: 1;
+    min-width: 0;
+}

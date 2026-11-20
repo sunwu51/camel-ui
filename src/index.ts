@@ -11,6 +11,6 @@ export { default as Inputfile } from './components/Inputfile/Inputfile';
 export { RadioGroup, Radio } from './components/Radio/Radio';
 export { default as Select } from './components/Select/Select';
 export { default as Switch } from './components/Switch/Switch';
-export { Tabs, Item as TabsItem } from './components/Tabs/Tabs';
+export { Tabs, Item as TabsItem, TabBar, type TabBarItem, type TabBarProps, type TabKey, type TabsVariant } from './components/Tabs/Tabs';
 export { default as Textarea } from './components/Textarea/Textarea';
 export { default as Tooltip } from './components/Tooltip/Tooltip';

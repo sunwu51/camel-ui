@@ -2,8 +2,6 @@
 .textarea-container {
     box-sizing: border-box;
     width: 100%;
-    /* 给阴影预留空间, 组件自身不设 margin */
-    padding: 0 var(--shadow-reserve) var(--shadow-reserve) 0;
 }
 
 .textarea-container textarea {

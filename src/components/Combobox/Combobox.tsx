@@ -35,7 +35,7 @@ function Combobox(props: ComboboxProps) {
     }
 
     return (
-        <div className={cn("combobox-container", props.className)} style={{...props.style}}>
+        <div className={cn("combobox-container", props.size === 'sm' && 'combobox-sm', props.className)} style={{...props.style}}>
             <div>
                 {label && <label className="w-fit" {...getLabelProps()}>
                     {label}
@@ -46,7 +46,7 @@ function Combobox(props: ComboboxProps) {
                         {...getInputProps()}
                     />
                     <button type='button' {...getToggleButtonProps()} >
-                        <Chevron />
+                        <Chevron size={props.size === 'sm' ? 16 : 20} />
                     </button>
                 </div>
             </div>

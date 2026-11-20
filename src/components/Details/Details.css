@@ -32,3 +32,12 @@
 .details-content {
     animation: camel-fade-in var(--dur-slow) ease-out;
 }
+
+.details-content[hidden] {
+    display: none;
+}
+
+/* stack: 内容区子元素之间留出 --shadow-space, 同 Card stack */
+.details-stack > .details-content > * + * {
+    margin-top: var(--shadow-space);
+}

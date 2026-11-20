@@ -3,8 +3,6 @@
     position: relative;
     display: flex;
     flex-direction: column;
-    /* 给阴影预留空间, 组件自身不设 margin */
-    padding: 0 var(--shadow-reserve) var(--shadow-reserve) 0;
 }
 
 .combobox-container > div:first-child {
@@ -54,4 +52,27 @@
 
 .combobox-input button[aria-expanded="true"] .arrow {
     transform: rotate(180deg);
+}
+
+/* size="sm": 28px, 与 Input / Button size="sm" 等高 */
+.combobox-container.combobox-sm > div:first-child {
+    gap: 0.25rem;
+}
+
+.combobox-container.combobox-sm label {
+    font-size: 0.8rem;
+    line-height: 1rem;
+}
+
+.combobox-container.combobox-sm .combobox-input {
+    min-height: 1.75rem;
+    padding: 2px var(--s-2);
+    border-radius: var(--r-sm);
+    font-size: 0.8rem;
+    line-height: 1.5;
+}
+
+.combobox-container.combobox-sm .listbox li {
+    padding: var(--s-1) var(--s-2);
+    font-size: 0.8rem;
 }

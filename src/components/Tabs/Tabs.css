@@ -73,3 +73,125 @@
 .tabs-panel-selected {
     display: block;
 }
+
+/* ---------- 标签上的计数 / 徽标 / 小圆点(两种样式通用) ---------- */
+.tabs-button,
+.tabs-button-selected,
+.tabs-line-tab {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.tabs-count {
+    min-width: 1rem;
+    padding: 0 5px;
+    border-radius: 999px;
+    background: var(--c-muted);
+    color: var(--c-fg);
+    font-size: 0.7rem;
+    font-weight: 700;
+    line-height: 1rem;
+    text-align: center;
+}
+
+.tabs-badge {
+    padding: 0 5px;
+    border-radius: var(--r-sm);
+    background: var(--c-success);
+    color: var(--c-on-soft);
+    font-size: 0.7rem;
+    font-weight: 700;
+    line-height: 1rem;
+}
+
+.tabs-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--c-success-strong);
+}
+
+.tabs-extra {
+    display: flex;
+    align-items: center;
+    gap: var(--s-2);
+    margin-left: auto;
+    padding-left: var(--s-2);
+}
+
+/* ---------- line: 下划线式 ---------- */
+.tabs-container.tabs-line {
+    padding: 0;
+}
+
+.tabs-list-line {
+    display: flex;
+    align-items: stretch;
+    gap: 2px;
+    /* 底线用内阴影画: 列表 overflow 会裁掉越界的边框, 选中下划线要盖在底线上面 */
+    box-shadow: inset 0 -2px 0 0 var(--c-muted);
+    overflow-x: auto;
+    overflow-y: hidden;
+}
+
+/* 标签放不下时可横向滚动: 细滚动条, 不占太多高度 */
+.tabs-list-line::-webkit-scrollbar {
+    height: 4px;
+}
+
+.tabs-list-line::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.tabs-line-tab {
+    flex: none;
+    position: relative;
+    margin: 0;
+    padding: 0 var(--s-3);
+    min-height: 2.25rem;
+    border: 0;
+    border-bottom: 2px solid transparent;
+    background: transparent;
+    color: var(--c-fg-muted);
+    font: inherit;
+    font-weight: 600;
+    white-space: nowrap;
+    cursor: pointer;
+    transition: color var(--dur) ease, border-color var(--dur) ease;
+}
+
+@media (hover: hover) {
+    .tabs-line-tab:not(:disabled):hover {
+        color: var(--c-fg);
+    }
+}
+
+.tabs-line-tab.is-selected {
+    color: var(--c-fg);
+    border-bottom-color: var(--c-indicator);
+    font-weight: 800;
+}
+
+.tabs-line-tab.is-selected .tabs-count {
+    background: var(--c-primary-tint);
+}
+
+.tabs-line-tab:focus-visible {
+    outline: none;
+    box-shadow: inset 0 0 0 2px var(--c-focus);
+}
+
+.tabs-line-tab:disabled {
+    color: var(--c-fg-muted);
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.tabs-line-panel {
+    padding: var(--s-3) 0 0;
+}
+
+.tabs-line-panel[hidden] {
+    display: none;
+}

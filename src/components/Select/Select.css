@@ -4,8 +4,6 @@
     display: flex;
     flex-direction: column;
     gap: 0.375rem;
-    /* 给阴影预留空间, 组件自身不设 margin */
-    padding: 0 var(--shadow-reserve) var(--shadow-reserve) 0;
 }
 
 .select-container label {
@@ -39,4 +37,34 @@
 
 .select-container > button[aria-expanded="true"] .arrow {
     transform: rotate(180deg);
+}
+
+/* size="sm": 28px, 与 Input / Button size="sm" 等高 */
+.select-container.select-sm {
+    gap: 0.25rem;
+}
+
+.select-container.select-sm label {
+    font-size: 0.8rem;
+    line-height: 1rem;
+}
+
+.select-container.select-sm > button {
+    min-height: 1.75rem;
+    padding: 2px var(--s-2);
+    border-radius: var(--r-sm);
+    font-size: 0.8rem;
+    line-height: 1.5;
+}
+
+.select-container.select-sm .listbox li {
+    padding: var(--s-1) var(--s-2);
+    font-size: 0.8rem;
+}
+
+/* sm 保持单行, 放不下时省略 */
+.select-container.select-sm .select-trigger-value {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
 }

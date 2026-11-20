@@ -47,7 +47,7 @@ function Input(props: InputProps) {
         />
     );
     return (
-        <div className={cn("input-container", dir === 'row' && 'input-row', props.className)} style={{ flexDirection: dir, ...props.style }}>
+        <div className={cn("input-container", dir === 'row' && 'input-row', props.size === 'sm' && 'input-sm', props.className)} style={{ flexDirection: dir, ...props.style }}>
             { label &&
                 <label  {...labelProps} className={props.labelClassName} htmlFor={inputId}>
                     {label}

@@ -13,14 +13,14 @@ function Details(props: DetailsProps) {
   const { isSelected } = state;
   const { buttonProps } = useToggleButton(props, state, ref);
   return (
-    <div className={cn('details-container', props.className)} style={{...props.style}}>
+    <div className={cn('details-container', props.stack && 'details-stack', props.className)} style={{...props.style}}>
         <button {...buttonProps} aria-pressed={undefined} aria-expanded={isSelected} className={'details-title'}>
                 <div className={cn(props.titleClassName)}>
                     {props.title}
                 </div>
                 <Chevron />
         </button>
-          <div className={cn('details-content', state.isSelected? '' :'hidden')}>
+          <div className={cn('details-content', props.contentClassName)} hidden={!isSelected}>
               {props.children}
           </div>
     </div>

@@ -106,6 +106,14 @@ function App() {
                                 <p>Click outside, press Esc or the ✕ button to close.</p>
                             </Dialog>
                         </Card>
+                        <Card
+                            collapsible={<p>折叠区的内容: 默认收起, 点底部按钮展开。</p>}
+                            expandLabel='展开更多'
+                            collapseLabel='收起'
+                        >
+                            <strong>可展开的 Card</strong>
+                            <p>主体内容始终显示。</p>
+                        </Card>
                     </div>
                     <div>
                         <h3 className='demo-legend'>组件4: Inputfile</h3>
@@ -128,6 +136,13 @@ function App() {
                                 <Item title="tab3" key="tab3">Panel 3</Item>
                             </Tabs>
                         </div>
+                        <div style={{ marginTop: 'var(--s-4)', width: 360, maxWidth: '100%' }}>
+                            <Tabs variant='line' aria-label='line tabs' extra={<Badge variant='success'>200 OK</Badge>}>
+                                <Item title='Params' count={2}>Params panel</Item>
+                                <Item title='Body' badge='json'>Body panel</Item>
+                                <Item title='Script' dot>Script panel</Item>
+                            </Tabs>
+                        </div>
                     </div>
                 </div>
                 <div className='app-divider'></div>
@@ -139,8 +154,35 @@ function App() {
                         <Input isDisabled={true} placeholder="disable"></Input>
                     </div>
                     <div className='demo-block'>
+                        <h3 className='demo-legend'>Input + Button</h3>
+                        <div className='demo-input-btn' data-case='no-label'>
+                            <Input aria-label='keyword' placeholder='no label' />
+                            <Button>Search</Button>
+                        </div>
+                        <div className='demo-input-btn demo-input-btn-end' data-case='with-label'>
+                            <Input label='with label:' placeholder='input then button' />
+                            <Button>Add</Button>
+                        </div>
+                        <div className='demo-input-btn' data-case='sm'>
+                            <Input size='sm' aria-label='name' placeholder='small input + small button' />
+                            <Button size='sm'>OK</Button>
+                        </div>
+                        <div className='demo-input-btn demo-input-btn-end' data-case='sm-label'>
+                            <Input size='sm' label='small with label:' type='password' placeholder='password' />
+                            <Button size='sm'>Save</Button>
+                        </div>
+                    </div>
+                    <div className='demo-block'>
                         <Select label={"组件8: Select"} items={colors}></Select>
                         <Select items={richColorOptions}></Select>
+                        <div className='demo-input-btn demo-input-btn-end' data-case='sm-select'>
+                            <Select size='sm' label='sm Select' items={colors} />
+                            <Input size='sm' label='sm Input' placeholder='input' />
+                        </div>
+                        <div className='demo-input-btn demo-input-btn-end' data-case='sm-combobox'>
+                            <Combobox size='sm' label='sm Combobox' items={colors} getFilter={getFilter} />
+                            <Button size='sm'>OK</Button>
+                        </div>
                     </div>
                     <div className='demo-block'>
                         <Combobox label={"组件9: Combobox"} items={colors} getFilter={getFilter}></Combobox>
@@ -154,12 +196,28 @@ function App() {
                         <Details title={"This is a title open to see details"}
                             children={<h1 style={{ fontSize: '3rem' }}>Hello World~</h1>}
                         ></Details>
+                        <Details title='stack: 默认折叠, 内容自动留出阴影间距' stack>
+                            <Input size='sm' aria-label='a' placeholder='input a' />
+                            <Select size='sm' aria-label='b' items={colors} />
+                            <p>下方文字不会被阴影压住</p>
+                        </Details>
                     </Card>
                     <div>
                         <RadioGroup label='组件11: Radio' defaultValue={"dog"}>
                             <Radio value='cat' id='c1'>Cat</Radio>
                             <Radio value='dog'>Dog</Radio>
                             <Radio isDisabled={true} value='disabled'>disabled</Radio>
+                        </RadioGroup>
+                        <RadioGroup label='Segmented' variant='segmented' defaultValue='json' style={{ marginTop: 'var(--s-3)' }}>
+                            <Radio value='none'>none</Radio>
+                            <Radio value='json'>json</Radio>
+                            <Radio value='text'>text</Radio>
+                            <Radio value='form' isDisabled>form</Radio>
+                        </RadioGroup>
+                        <RadioGroup aria-label='segmented small' variant='segmented' size='sm' defaultValue='m' style={{ marginTop: 'var(--s-3)' }}>
+                            <Radio value='s'>S</Radio>
+                            <Radio value='m'>M</Radio>
+                            <Radio value='l'>L</Radio>
                         </RadioGroup>
                     </div>
                     <div>

@@ -18,6 +18,7 @@
     --c-line: #171717;      /* 边框 */
     --c-shadow: #171717;    /* 硬阴影 */
     --c-focus: #1a6dff;     /* 焦点环 */
+    --c-indicator: var(--c-primary-strong); /* 线型 Tabs 的选中下划线 */
     --c-on-soft: #171717;   /* 放在 soft 色块上的文字 */
 
     /* status colors: soft = 填充底色(配深色文字), strong = hover / badge(配白字), tint = 高亮底 */
@@ -53,12 +54,14 @@
     --s-5: 24px;
     --s-6: 32px;
 
-    /* hard shadow. 组件自身 margin 为 0, 外层容器用 --shadow-reserve 给阴影预留空间 */
+    /* hard shadow. 组件自身 margin 为 0; 阴影不占布局, 父容器 overflow:hidden 时可用 --shadow-reserve 预留空间 */
     --shadow-sm: 2px 2px 0 0 var(--c-shadow);
     --shadow: 3px 3px 0 0 var(--c-shadow);
     --shadow-lg: 4px 4px 0 0 var(--c-shadow);
     --shadow-xl: 6px 6px 0 0 var(--c-shadow);
     --shadow-reserve: 4px;
+    /* 带硬阴影的控件与下方内容的最小间距: 阴影最多伸出 4px(聚焦态), 留 8px 更舒适 */
+    --shadow-space: 8px;
     /* 禁用态: 保留同样大小的灰色阴影, 使占位与可用状态对齐 */
     --shadow-muted-sm: 2px 2px 0 0 var(--c-fg-muted);
     --shadow-muted: 3px 3px 0 0 var(--c-fg-muted);
@@ -132,6 +135,7 @@
         --c-line: #d9d9e0;
         --c-shadow: #5d5d6e;
         --c-focus: #9dbcff;
+        --c-indicator: var(--c-focus);
         --c-primary-tint: #27324f;
         --c-danger-text: #ff8a8a;
     }
@@ -147,6 +151,7 @@
     --c-line: #d9d9e0;
     --c-shadow: #5d5d6e;
     --c-focus: #9dbcff;
+    --c-indicator: var(--c-focus);
     --c-primary-tint: #27324f;
     --c-danger-text: #ff8a8a;
 }
@@ -242,6 +247,8 @@
 .select-container > button:disabled {
     background: var(--c-muted);
     color: var(--c-fg-muted);
+    /* 与 Button 禁用态一致: 边框和阴影都变灰 */
+    border-color: var(--c-fg-muted);
     box-shadow: var(--shadow-muted-sm);
     cursor: not-allowed;
 }
@@ -257,7 +264,7 @@
     z-index: var(--z-popover);
     top: 100%;
     left: 0;
-    right: var(--shadow-reserve);
+    right: 0;
     margin-top: var(--s-1);
     padding: var(--s-1);
     border: 2px solid var(--c-line);

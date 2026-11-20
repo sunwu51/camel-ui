@@ -12,7 +12,8 @@
     border-radius: var(--r-md);
     background: var(--btn-bg);
     color: var(--btn-fg);
-    box-shadow: var(--shadow);
+    /* 与输入框同级: 静止 2px, hover 3px, 并排时阴影一致 */
+    box-shadow: var(--shadow-sm);
     font-weight: 700;
     line-height: 1.5;
     cursor: pointer;
@@ -37,12 +38,12 @@
     .button:hover:not(:disabled) {
         background: var(--btn-bg-hover);
         transform: translate(-1px, -1px);
-        box-shadow: var(--shadow-lg);
+        box-shadow: var(--shadow);
     }
 }
 
 .button:active:not(:disabled) {
-    transform: translate(3px, 3px);
+    transform: translate(2px, 2px);
     box-shadow: 0 0 0 0 var(--c-shadow);
 }
 
@@ -55,6 +56,6 @@
     background: var(--c-muted);
     color: var(--c-fg-muted);
     border-color: var(--c-fg-muted);
-    box-shadow: var(--shadow-muted);
+    box-shadow: var(--shadow-muted-sm);
     cursor: not-allowed;
 }

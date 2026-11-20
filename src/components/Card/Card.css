@@ -6,3 +6,65 @@
     color: var(--c-fg);
     box-shadow: var(--shadow-lg);
 }
+
+/* 可展开的 Card: 折叠内容在主体下方, 底部是一条展开/收起按钮 */
+.card-collapsible {
+    margin-top: var(--s-3);
+    padding-top: var(--s-3);
+    border-top: 2px dashed var(--c-muted);
+    animation: camel-fade-in var(--dur-slow) ease-out;
+}
+
+.card-collapsible[hidden] {
+    display: none;
+}
+
+.card-expand-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--s-1);
+    width: 100%;
+    margin-top: var(--s-2);
+    padding: 2px 0;
+    border: 0;
+    border-radius: var(--r-sm);
+    background: transparent;
+    color: var(--c-fg-muted);
+    font: inherit;
+    font-size: 0.8rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color var(--dur) ease, color var(--dur) ease;
+}
+
+@media (hover: hover) {
+    .card-expand-toggle:hover {
+        background: var(--c-primary-tint);
+        color: var(--c-fg);
+    }
+}
+
+.card-expand-toggle:focus-visible {
+    outline: var(--focus-outline);
+    outline-offset: 0;
+}
+
+.card-expand-toggle[aria-expanded="true"] .arrow {
+    transform: rotate(180deg);
+}
+
+/* stack: 子元素之间留出 --shadow-space, 硬阴影不会压到下一行内容.
+   用相邻兄弟的上边距实现, 不改成 flex, 以免按钮被拉满宽或下拉框被压窄 */
+.card-stack > * + *,
+.card-stack > .card-collapsible > * + * {
+    margin-top: var(--shadow-space);
+}
+
+.card-stack > .card-collapsible {
+    margin-top: var(--s-3);
+}
+
+.card-stack > .card-expand-toggle {
+    margin-top: var(--s-2);
+}

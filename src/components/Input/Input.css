@@ -4,8 +4,6 @@
     width: 100%;
     gap: 0.375rem;
     box-sizing: border-box;
-    /* 给阴影预留空间, 组件自身不设 margin */
-    padding: 0 var(--shadow-reserve) var(--shadow-reserve) 0;
 }
 
 .input-container label {
@@ -78,4 +76,33 @@
 .input-toggle:disabled {
     cursor: not-allowed;
     opacity: 0.5;
+}
+
+/* 小号: 与 Button size="sm" 等高(28px), 用于工具栏、卡片头部等紧凑场景 */
+.input-container.input-sm input {
+    min-height: 1.75rem;
+    padding: 2px var(--s-2);
+    border-radius: var(--r-sm);
+    font-size: 0.8rem;
+    line-height: 1.5;
+}
+
+.input-container.input-sm label {
+    font-size: 0.8rem;
+    line-height: 1rem;
+}
+
+.input-container.input-sm .input-field input {
+    padding-right: 1.75rem;
+}
+
+.input-container.input-sm .input-toggle {
+    right: 0.25rem;
+    width: 1.25rem;
+    height: 1.25rem;
+}
+
+.input-container.input-sm .input-toggle svg {
+    width: 14px;
+    height: 14px;
 }

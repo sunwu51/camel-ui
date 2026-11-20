@@ -20,7 +20,7 @@ function Select(props: SelectProps) {
     })
 
     return (
-        <div className={cn('select-container', props.className)} style={{...props.style}}>
+        <div className={cn('select-container', props.size === 'sm' && 'select-sm', props.className)} style={{...props.style}}>
             {props.label && (
                 <label className='select-label' {...getLabelProps()}>
                     {props.label}
@@ -32,7 +32,7 @@ function Select(props: SelectProps) {
                     : undefined)}
             >
                 <span className='select-trigger-value'>{selectedItem ?? props.placeholder ?? 'select an element'}</span>
-                <Chevron />
+                <Chevron size={props.size === 'sm' ? 16 : 20} />
             </button>
             <div className='listbox' hidden={!isOpen}>
                 <ul {...getMenuProps()}>

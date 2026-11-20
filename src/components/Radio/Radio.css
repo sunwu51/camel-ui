@@ -100,3 +100,83 @@
     font-size: 0.8rem;
     color: var(--c-danger-text);
 }
+
+/* ---------- segmented: 分段按钮样式的单选 ---------- */
+.radio-group-segmented {
+    align-items: flex-start;
+}
+
+.radio-segmented {
+    display: inline-flex;
+    max-width: 100%;
+    border: 2px solid var(--c-line);
+    border-radius: var(--r-sm);
+    background: var(--c-surface);
+    box-shadow: var(--shadow-sm);
+    overflow: hidden;
+}
+
+.radio-segment {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    min-height: calc(2.25rem - 4px);
+    padding: 0 var(--s-3);
+    background: var(--c-surface);
+    color: var(--c-fg);
+    font-weight: 600;
+    line-height: 1.2;
+    white-space: nowrap;
+    cursor: pointer;
+    user-select: none;
+    transition: background-color var(--dur) ease;
+}
+
+.radio-segment + .radio-segment {
+    border-left: 2px solid var(--c-line);
+}
+
+/* 原生 input 视觉隐藏但保持可聚焦, 方向键切换选项 */
+.radio-segment input {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    opacity: 0;
+    cursor: pointer;
+}
+
+@media (hover: hover) {
+    .radio-segment:not(.is-selected):not(.is-disabled):hover {
+        background: var(--c-primary-tint);
+    }
+}
+
+.radio-segment.is-selected {
+    background: var(--c-primary);
+    color: var(--c-on-soft);
+    font-weight: 800;
+}
+
+.radio-segment:has(input:focus-visible) {
+    box-shadow: inset 0 0 0 2px var(--c-focus);
+}
+
+.radio-segment.is-disabled,
+.radio-segment.is-disabled input {
+    cursor: not-allowed;
+}
+
+.radio-segment.is-disabled {
+    background: var(--c-muted);
+    color: var(--c-fg-muted);
+}
+
+.radio-segmented-sm .radio-segment {
+    min-height: calc(1.75rem - 4px);
+    padding: 0 10px;
+    font-size: 0.8rem;
+}
