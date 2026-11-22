@@ -56,6 +56,7 @@ function Combobox(props: ComboboxProps) {
                         <li
                             key={`${typeof item === 'string' ? item : item.itemToString()}${index}`}
                             data-highlighted={highlightedIndex === index || undefined}
+                            title={typeof item === 'string' ? item : item.itemToString()}
                             {...getItemProps({ item, index })}
                         >
                             <span>{typeof(item) === 'string' ? item : item.itemToJsx()}</span>

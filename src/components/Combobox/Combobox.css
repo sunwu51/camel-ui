@@ -3,6 +3,8 @@
     position: relative;
     display: flex;
     flex-direction: column;
+    /* 作为 flex 子项时允许收缩, 否则 nowrap 的长选项会把容器撑宽 */
+    min-width: 0;
 }
 
 .combobox-container > div:first-child {

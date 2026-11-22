@@ -31,7 +31,12 @@ function Select(props: SelectProps) {
                     ? { 'aria-label': props['aria-label'], 'aria-labelledby': undefined }
                     : undefined)}
             >
-                <span className='select-trigger-value'>{selectedItem ?? props.placeholder ?? 'select an element'}</span>
+                <span
+                    className='select-trigger-value'
+                    title={typeof selectedItem === 'string' ? selectedItem : undefined}
+                >
+                    {selectedItem ?? props.placeholder ?? 'select an element'}
+                </span>
                 <Chevron size={props.size === 'sm' ? 16 : 20} />
             </button>
             <div className='listbox' hidden={!isOpen}>
@@ -40,6 +45,7 @@ function Select(props: SelectProps) {
                         <li
                             key={index}
                             data-highlighted={highlightedIndex === index || undefined}
+                            title={typeof item === 'string' ? item : undefined}
                             {...getItemProps({
                                 item,
                                 index,

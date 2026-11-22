@@ -295,10 +295,20 @@
     padding: var(--s-2) var(--s-3);
     border-radius: var(--r-sm);
     cursor: pointer;
+    /* 选项文字过长时单行省略, 而不是换行 */
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
 }
 
 .listbox li :where(h1, h2, h3, h4, h5, h6, p) {
     margin: 0;
+}
+
+/* 富文本选项: 块级子元素(含 flex 布局下被块级化的 span)各自单行省略 */
+.listbox li :where(h1, h2, h3, h4, h5, h6, p, div, span) {
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .listbox li[data-highlighted] {

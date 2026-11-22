@@ -4,6 +4,8 @@
     display: flex;
     flex-direction: column;
     gap: 0.375rem;
+    /* 作为 flex 子项时允许收缩, 否则 nowrap 的长文本会把容器撑宽 */
+    min-width: 0;
 }
 
 .select-container label {
@@ -26,6 +28,10 @@
 .select-container .select-trigger-value {
     flex: 1;
     min-width: 0;
+    /* 文字过长时单行省略, 而不是换行 */
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
 }
 
 .select-container .select-trigger-value :where(h1, h2, h3, h4, h5, h6, p) {
@@ -33,6 +39,12 @@
     font-size: inherit;
     line-height: inherit;
     font-weight: inherit;
+}
+
+/* 富文本选项: 块级子元素(含 flex 布局下被块级化的 span)各自单行省略 */
+.select-container .select-trigger-value :where(h1, h2, h3, h4, h5, h6, p, div, span) {
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .select-container > button[aria-expanded="true"] .arrow {
@@ -60,11 +72,4 @@
 .select-container.select-sm .listbox li {
     padding: var(--s-1) var(--s-2);
     font-size: 0.8rem;
-}
-
-/* sm 保持单行, 放不下时省略 */
-.select-container.select-sm .select-trigger-value {
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
 }
